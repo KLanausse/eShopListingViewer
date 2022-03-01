@@ -8,7 +8,7 @@ Public Class Dialog1
     's
 
 
-    Private Sub Dialog1_Open(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Activated
+    Private Sub Dialog1_Open(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
 
         'Check if the titles database is downloaded; if not, download it
         Dim FileName As String
@@ -32,6 +32,7 @@ Public Class Dialog1
             ListBox1.Items.Add(contentName + " - " + contentId)
 
         Next
+        ListBox1.Sorted = True
     End Sub
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click

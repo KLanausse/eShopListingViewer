@@ -32,7 +32,7 @@ Public Class Viewer
             metadata = XDocument.Load("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/title/" + Dialog1.ID + "/?shop_id=1")
             webErr = False
         Catch ex As WebException
-            Using reader As StreamReader = New StreamReader(ex.Response.GetResponseStream())
+            Using reader As New StreamReader(ex.Response.GetResponseStream())
                 metadata = XDocument.Parse(reader.ReadToEnd())
                 MsgBox(metadata.<eshop>.<error>.<message>.Value, vbCritical Or vbOK, "Error " + metadata.<eshop>.<error>.<code>.Value)
             End Using
@@ -45,7 +45,7 @@ Public Class Viewer
             Dim thumbList = metadata.Descendants("thumbnail")
             Dim thumbnailCount = 0
             For Each node As XElement In thumbList
-                thumbnailCount = thumbnailCount + 1
+                thumbnailCount += 1
                 Array.Resize(thumbnails, thumbnailCount)
                 thumbnails(thumbnailCount - 1) = node.Attribute("url").Value
                 Console.WriteLine(thumbnails(thumbnailCount - 1))
@@ -68,8 +68,8 @@ Public Class Viewer
         'System.Net.ServicePointManager.ServerCertificateValidationCallback = Nothing
     End Sub
 
-    Private Sub gameThumbnail_Click(sender As Object, e As EventArgs) Handles gameThumbnail.Click
-        currThumb = currThumb + 1
+    Private Sub GameThumbnail_Click(sender As Object, e As EventArgs) Handles gameThumbnail.Click
+        currThumb += 1
         If currThumb > thumbnails.Length Then
             currThumb = 1
         End If

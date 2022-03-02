@@ -4,7 +4,7 @@ Imports System.Xml
 
 Public Class Dialog1
     Public Property ID As String
-
+    Public fetchList = True
     's
 
 
@@ -22,17 +22,21 @@ Public Class Dialog1
         'Load the list
         Dim titlesList = XDocument.Load("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/titles?limit=1000000")
 
-        'Find and get the contentID and Name
-        Dim nodeList = titlesList.Descendants("title")
-        For Each node As XElement In nodeList
-            Dim contentId = node.Attribute("id").Value
-            Dim contentName = node.<name>.Value
-            Dim combined As String
-            'Add them to the ListBox
-            ListBox1.Items.Add(contentName + " - " + contentId)
+        If fetchList Then
+            'Find and get the contentID and Name
+            Dim nodeList = titlesList.Descendants("title")
+            For Each node As XElement In nodeList
+                Dim contentId = node.Attribute("id").Value
+                Dim contentName = node.<name>.Value
+                Dim combined As String
+                'Add them to the ListBox
+                ListBox1.Items.Add(contentName + " - " + contentId)
 
-        Next
-        ListBox1.Sorted = True
+            Next
+            ListBox1.Sorted = True
+            fetchList = False
+        End If
+
     End Sub
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click

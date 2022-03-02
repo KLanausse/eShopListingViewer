@@ -10,6 +10,14 @@ Public Class Viewer
 
     End Sub
 
+    Private Sub Form1_Open(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
+
+        'BottomScreen.Size = New Size(BottomScreen.Width + SystemInformation.VerticalScrollBarWidth, BottomScreen.Height)
+        'BottomScreen.VerticalScroll.Enabled = True
+        'BottomScreen.VerticalScroll.Visible = True
+
+    End Sub
+
 
     Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
         'Vars
@@ -41,6 +49,7 @@ Public Class Viewer
 
         'Setup page with the Metadata info
         If Not webErr Then
+
             'Find and get the Thumbnails
             Dim thumbList = metadata.Descendants("thumbnail")
             Dim thumbnailCount = 0
@@ -51,17 +60,26 @@ Public Class Viewer
                 Console.WriteLine(thumbnails(thumbnailCount - 1))
                 Console.WriteLine(thumbnailCount)
             Next
-            'Set Game Image
+            '   Set Game Image
             Dim image = thumbnails(0)
             currThumb = 1
             gameThumbnail.ImageLocation = image
+
             'Set Title and discription
             T_softTitle_01.Text = metadata.<eshop>.<title>.<name>.Value
             description.Text = Replace(metadata.<eshop>.<title>.<description>.Value, "<br>", vbNewLine)
+            'ESBR Rating
+            P_rating_00.SizeMode = PictureBoxSizeMode.StretchImage
+            P_rating_00.ImageLocation = metadata.<eshop>.<title>.<rating_info>.<rating>.<icons>.Descendants("icon")(0).Attribute("url").Value
+            'Platform 
+            PlatformLabel.Text = metadata.<eshop>.<title>.<platform>.<name>.Value
             BottomScreen.AutoScroll = True
         Else
             gameThumbnail.ImageLocation = Nothing
-            T_softTitle_01.Text = "Title"
+            T_softTitle_01.Text = Nothing
+            P_rating_00.ImageLocation = Nothing
+            description.Text = Nothing
+
         End If
 
         'Restore SSL Certificate Validation Checking

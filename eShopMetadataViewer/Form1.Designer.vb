@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Viewer
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,14 @@ Partial Class Viewer
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Viewer))
         Me.TopScreen = New System.Windows.Forms.Panel()
+        Me.PlatformLabel = New System.Windows.Forms.Label()
+        Me.T_price_00 = New System.Windows.Forms.Label()
+        Me.P_rating_00 = New System.Windows.Forms.PictureBox()
+        Me.W_BG_00 = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.T_softTitle_01 = New System.Windows.Forms.Label()
@@ -35,22 +39,22 @@ Partial Class Viewer
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.W_BG_00 = New System.Windows.Forms.Panel()
-        Me.P_rating_00 = New System.Windows.Forms.PictureBox()
         Me.TopScreen.SuspendLayout()
+        CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BottomScreen.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
-        Me.W_BG_00.SuspendLayout()
-        CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TopScreen
         '
         Me.TopScreen.BackColor = System.Drawing.Color.LightGoldenrodYellow
+        Me.TopScreen.Controls.Add(Me.PlatformLabel)
+        Me.TopScreen.Controls.Add(Me.T_price_00)
+        Me.TopScreen.Controls.Add(Me.P_rating_00)
         Me.TopScreen.Controls.Add(Me.W_BG_00)
         Me.TopScreen.Controls.Add(Me.PictureBox2)
         Me.TopScreen.Controls.Add(Me.PictureBox1)
@@ -63,6 +67,48 @@ Partial Class Viewer
         Me.TopScreen.Name = "TopScreen"
         Me.TopScreen.Size = New System.Drawing.Size(400, 240)
         Me.TopScreen.TabIndex = 0
+        '
+        'PlatformLabel
+        '
+        Me.PlatformLabel.AutoEllipsis = True
+        Me.PlatformLabel.BackColor = System.Drawing.Color.Transparent
+        Me.PlatformLabel.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.PlatformLabel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.PlatformLabel.Location = New System.Drawing.Point(128, 160)
+        Me.PlatformLabel.Name = "PlatformLabel"
+        Me.PlatformLabel.Size = New System.Drawing.Size(212, 30)
+        Me.PlatformLabel.TabIndex = 8
+        Me.PlatformLabel.Text = "Platform"
+        Me.PlatformLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'T_price_00
+        '
+        Me.T_price_00.BackColor = System.Drawing.Color.Transparent
+        Me.T_price_00.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.T_price_00.Location = New System.Drawing.Point(122, 100)
+        Me.T_price_00.Name = "T_price_00"
+        Me.T_price_00.Size = New System.Drawing.Size(96, 21)
+        Me.T_price_00.TabIndex = 7
+        Me.T_price_00.Text = "$0.00"
+        '
+        'P_rating_00
+        '
+        Me.P_rating_00.BackColor = System.Drawing.Color.White
+        Me.P_rating_00.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.P_rating_00.Location = New System.Drawing.Point(344, 135)
+        Me.P_rating_00.Name = "P_rating_00"
+        Me.P_rating_00.Size = New System.Drawing.Size(48, 72)
+        Me.P_rating_00.TabIndex = 0
+        Me.P_rating_00.TabStop = False
+        '
+        'W_BG_00
+        '
+        Me.W_BG_00.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.W_BG_00.BackgroundImage = CType(resources.GetObject("W_BG_00.BackgroundImage"), System.Drawing.Image)
+        Me.W_BG_00.Location = New System.Drawing.Point(342, 134)
+        Me.W_BG_00.Name = "W_BG_00"
+        Me.W_BG_00.Size = New System.Drawing.Size(52, 74)
+        Me.W_BG_00.TabIndex = 6
         '
         'PictureBox2
         '
@@ -137,7 +183,7 @@ Partial Class Viewer
         Me.description.Name = "description"
         Me.description.Size = New System.Drawing.Size(300, 240)
         Me.description.TabIndex = 0
-        Me.description.Text = "N/A"
+        Me.description.Text = "description"
         Me.description.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MenuStrip1
@@ -166,24 +212,6 @@ Partial Class Viewer
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'W_BG_00
-        '
-        Me.W_BG_00.BackColor = System.Drawing.Color.White
-        Me.W_BG_00.Controls.Add(Me.P_rating_00)
-        Me.W_BG_00.Location = New System.Drawing.Point(342, 134)
-        Me.W_BG_00.Name = "W_BG_00"
-        Me.W_BG_00.Size = New System.Drawing.Size(52, 74)
-        Me.W_BG_00.TabIndex = 6
-        '
-        'P_rating_00
-        '
-        Me.P_rating_00.BackColor = System.Drawing.Color.LightGray
-        Me.P_rating_00.Location = New System.Drawing.Point(17, 22)
-        Me.P_rating_00.Name = "P_rating_00"
-        Me.P_rating_00.Size = New System.Drawing.Size(12, 22)
-        Me.P_rating_00.TabIndex = 0
-        Me.P_rating_00.TabStop = False
-        '
         'Viewer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -201,6 +229,7 @@ Partial Class Viewer
         Me.Name = "Viewer"
         Me.Text = "eShop Metadata Viewer"
         Me.TopScreen.ResumeLayout(False)
+        CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
@@ -209,8 +238,6 @@ Partial Class Viewer
         Me.BottomScreen.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        Me.W_BG_00.ResumeLayout(False)
-        CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -229,4 +256,6 @@ Partial Class Viewer
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents W_BG_00 As Panel
     Friend WithEvents P_rating_00 As PictureBox
+    Friend WithEvents T_price_00 As Label
+    Friend WithEvents PlatformLabel As Label
 End Class

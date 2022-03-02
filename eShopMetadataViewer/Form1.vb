@@ -2,6 +2,10 @@
 Imports System.Net
 
 Public Class Viewer
+    Public Property version As String = "0.2"
+    'MM/DD/YYYY
+    Public Property creationDate As String = "3/1/2022"
+
     'Public Vars
     Public currThumb = 1
     Public thumbnails(1) As String

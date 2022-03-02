@@ -72,7 +72,6 @@ Public Class Viewer
             T_price_00.Text = Dialog1.Price
 
             'ESBR Rating
-            P_rating_00.SizeMode = PictureBoxSizeMode.StretchImage
             If metadata.<eshop>.<title>.<rating_info>.Value = "" Then
                 P_rating_00.ImageLocation = ""
                 P_rating_00.Visible = False

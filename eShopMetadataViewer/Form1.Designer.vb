@@ -39,6 +39,7 @@ Partial Class Viewer
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TopScreen.SuspendLayout()
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,11 +48,13 @@ Partial Class Viewer
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BottomScreen.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TopScreen
         '
         Me.TopScreen.BackColor = System.Drawing.Color.LightGoldenrodYellow
+        Me.TopScreen.Controls.Add(Me.PictureBox1)
         Me.TopScreen.Controls.Add(Me.PlatformLabel)
         Me.TopScreen.Controls.Add(Me.T_price_00)
         Me.TopScreen.Controls.Add(Me.P_rating_00)
@@ -98,6 +101,7 @@ Partial Class Viewer
         Me.P_rating_00.Location = New System.Drawing.Point(344, 135)
         Me.P_rating_00.Name = "P_rating_00"
         Me.P_rating_00.Size = New System.Drawing.Size(48, 72)
+        Me.P_rating_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.P_rating_00.TabIndex = 0
         Me.P_rating_00.TabStop = False
         '
@@ -146,6 +150,7 @@ Partial Class Viewer
         'gameThumbnail
         '
         Me.gameThumbnail.BackColor = System.Drawing.Color.White
+        Me.gameThumbnail.Cursor = System.Windows.Forms.Cursors.Hand
         Me.gameThumbnail.Location = New System.Drawing.Point(8, 91)
         Me.gameThumbnail.Name = "gameThumbnail"
         Me.gameThumbnail.Size = New System.Drawing.Size(112, 112)
@@ -159,6 +164,7 @@ Partial Class Viewer
         Me.P_Shadow_00.Location = New System.Drawing.Point(3, 86)
         Me.P_Shadow_00.Name = "P_Shadow_00"
         Me.P_Shadow_00.Size = New System.Drawing.Size(122, 122)
+        Me.P_Shadow_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.P_Shadow_00.TabIndex = 0
         Me.P_Shadow_00.TabStop = False
         '
@@ -212,6 +218,16 @@ Partial Class Viewer
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Location = New System.Drawing.Point(67, -36)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(400, 78)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 9
+        Me.PictureBox1.TabStop = False
+        '
         'Viewer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -238,6 +254,7 @@ Partial Class Viewer
         Me.BottomScreen.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -258,4 +275,5 @@ Partial Class Viewer
     Friend WithEvents P_rating_00 As PictureBox
     Friend WithEvents T_price_00 As Label
     Friend WithEvents PlatformLabel As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

@@ -12,9 +12,6 @@ Public Class Viewer
 
     Private Sub Form1_Open(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        'BottomScreen.Size = New Size(BottomScreen.Width + SystemInformation.VerticalScrollBarWidth, BottomScreen.Height)
-        'BottomScreen.VerticalScroll.Enabled = True
-        'BottomScreen.VerticalScroll.Visible = True
 
     End Sub
 
@@ -74,11 +71,13 @@ Public Class Viewer
             'Platform 
             PlatformLabel.Text = metadata.<eshop>.<title>.<platform>.<name>.Value
             BottomScreen.AutoScroll = True
+            BottomScreen.Size = New Size(320 + SystemInformation.VerticalScrollBarWidth + 2, BottomScreen.Height)
         Else
             gameThumbnail.ImageLocation = Nothing
             T_softTitle_01.Text = Nothing
             P_rating_00.ImageLocation = Nothing
             description.Text = Nothing
+            BottomScreen.Size = New Size(320, BottomScreen.Height)
 
         End If
 

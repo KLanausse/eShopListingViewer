@@ -10,19 +10,20 @@ Public Class Dialog1
 
     Private Sub Dialog1_Open(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        'Check if the titles database is downloaded; if not, download it
-        Dim FileName As String
-        Dim FileExists As String
-        FileName = Directory.GetCurrentDirectory() + "\titles.xml"
-        FileExists = Dir(FileName)
-
-        If FileExists = "" Then
-            My.Computer.Network.DownloadFile("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/titles?limit=1000000", Directory.GetCurrentDirectory() + "\titles.xml")
-        End If
-        'Load the list
-        Dim titlesList = XDocument.Load("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/titles?limit=1000000")
-
         If fetchList Then
+
+            'Check if the titles database is downloaded; if not, download it
+            Dim FileName As String
+            Dim FileExists As String
+            FileName = Directory.GetCurrentDirectory() + "\titles.xml"
+            FileExists = Dir(FileName)
+
+            If FileExists = "" Then
+                My.Computer.Network.DownloadFile("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/titles?limit=1000000", Directory.GetCurrentDirectory() + "\titles.xml")
+            End If
+            'Load the list
+            Dim titlesList = XDocument.Load("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/titles?limit=1000000")
+
             'Find and get the contentID and Name
             Dim nodeList = titlesList.Descendants("title")
             For Each node As XElement In nodeList

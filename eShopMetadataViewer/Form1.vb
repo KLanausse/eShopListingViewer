@@ -2,9 +2,9 @@
 Imports System.Net
 
 Public Class Viewer
-    Public Property version As String = "0.2"
+    Public Property version As String = "0.2.5"
     'MM/DD/YYYY
-    Public Property creationDate As String = "3/1/2022"
+    Public Property creationDate As String = "3/2/2022"
 
     'Public Vars
     Public currThumb = 1
@@ -66,9 +66,10 @@ Public Class Viewer
             currThumb = 1
             gameThumbnail.ImageLocation = image
 
-            'Set Title and discription
+            'Set Title, discription, and price
             T_softTitle_01.Text = metadata.<eshop>.<title>.<name>.Value
             description.Text = Replace(metadata.<eshop>.<title>.<description>.Value, "<br>", vbNewLine)
+            T_price_00.Text = Dialog1.Price
             'ESBR Rating
             P_rating_00.SizeMode = PictureBoxSizeMode.StretchImage
             P_rating_00.ImageLocation = metadata.<eshop>.<title>.<rating_info>.<rating>.<icons>.Descendants("icon")(0).Attribute("url").Value

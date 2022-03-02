@@ -28,8 +28,8 @@ Partial Class Viewer
         Me.T_price_00 = New System.Windows.Forms.Label()
         Me.P_rating_00 = New System.Windows.Forms.PictureBox()
         Me.W_BG_00 = New System.Windows.Forms.Panel()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.P_Line_01 = New System.Windows.Forms.PictureBox()
+        Me.P_Line_02 = New System.Windows.Forms.PictureBox()
         Me.T_softTitle_01 = New System.Windows.Forms.Label()
         Me.gameThumbnail = New System.Windows.Forms.PictureBox()
         Me.P_Shadow_00 = New System.Windows.Forms.PictureBox()
@@ -41,8 +41,8 @@ Partial Class Viewer
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.TopScreen.SuspendLayout()
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.P_Line_02, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BottomScreen.SuspendLayout()
@@ -56,8 +56,8 @@ Partial Class Viewer
         Me.TopScreen.Controls.Add(Me.T_price_00)
         Me.TopScreen.Controls.Add(Me.P_rating_00)
         Me.TopScreen.Controls.Add(Me.W_BG_00)
-        Me.TopScreen.Controls.Add(Me.PictureBox2)
-        Me.TopScreen.Controls.Add(Me.PictureBox1)
+        Me.TopScreen.Controls.Add(Me.P_Line_01)
+        Me.TopScreen.Controls.Add(Me.P_Line_02)
         Me.TopScreen.Controls.Add(Me.T_softTitle_01)
         Me.TopScreen.Controls.Add(Me.gameThumbnail)
         Me.TopScreen.Controls.Add(Me.P_Shadow_00)
@@ -110,27 +110,27 @@ Partial Class Viewer
         Me.W_BG_00.Size = New System.Drawing.Size(52, 74)
         Me.W_BG_00.TabIndex = 6
         '
-        'PictureBox2
+        'P_Line_01
         '
-        Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox2.BackgroundImage = CType(resources.GetObject("PictureBox2.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox2.Location = New System.Drawing.Point(128, 158)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(212, 8)
-        Me.PictureBox2.TabIndex = 5
-        Me.PictureBox2.TabStop = False
+        Me.P_Line_01.BackColor = System.Drawing.Color.Transparent
+        Me.P_Line_01.BackgroundImage = CType(resources.GetObject("P_Line_01.BackgroundImage"), System.Drawing.Image)
+        Me.P_Line_01.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.P_Line_01.Location = New System.Drawing.Point(128, 158)
+        Me.P_Line_01.Name = "P_Line_01"
+        Me.P_Line_01.Size = New System.Drawing.Size(212, 8)
+        Me.P_Line_01.TabIndex = 5
+        Me.P_Line_01.TabStop = False
         '
-        'PictureBox1
+        'P_Line_02
         '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(128, 193)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(212, 8)
-        Me.PictureBox1.TabIndex = 4
-        Me.PictureBox1.TabStop = False
+        Me.P_Line_02.BackColor = System.Drawing.Color.Transparent
+        Me.P_Line_02.BackgroundImage = CType(resources.GetObject("P_Line_02.BackgroundImage"), System.Drawing.Image)
+        Me.P_Line_02.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.P_Line_02.Location = New System.Drawing.Point(128, 193)
+        Me.P_Line_02.Name = "P_Line_02"
+        Me.P_Line_02.Size = New System.Drawing.Size(212, 8)
+        Me.P_Line_02.TabIndex = 4
+        Me.P_Line_02.TabStop = False
         '
         'T_softTitle_01
         '
@@ -230,8 +230,8 @@ Partial Class Viewer
         Me.Text = "eShop Metadata Viewer"
         Me.TopScreen.ResumeLayout(False)
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.P_Line_02, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BottomScreen.ResumeLayout(False)
@@ -252,8 +252,8 @@ Partial Class Viewer
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents T_softTitle_01 As Label
     Friend WithEvents description As Label
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents P_Line_02 As PictureBox
+    Friend WithEvents P_Line_01 As PictureBox
     Friend WithEvents W_BG_00 As Panel
     Friend WithEvents P_rating_00 As PictureBox
     Friend WithEvents T_price_00 As Label

@@ -2,9 +2,9 @@
 Imports System.Net
 
 Public Class Viewer
-    Public Property version As String = "0.2.5"
+    Public Property version As String = "0.2.6"
     'MM/DD/YYYY
-    Public Property creationDate As String = "3/2/2022"
+    Public Property creationDate As String = "3/2/2022 - 11:23 EST"
 
     'Public Vars
     Public currThumb = 1
@@ -70,9 +70,23 @@ Public Class Viewer
             T_softTitle_01.Text = metadata.<eshop>.<title>.<name>.Value
             description.Text = Replace(metadata.<eshop>.<title>.<description>.Value, "<br>", vbNewLine)
             T_price_00.Text = Dialog1.Price
+
             'ESBR Rating
             P_rating_00.SizeMode = PictureBoxSizeMode.StretchImage
-            P_rating_00.ImageLocation = metadata.<eshop>.<title>.<rating_info>.<rating>.<icons>.Descendants("icon")(0).Attribute("url").Value
+            If metadata.<eshop>.<title>.<rating_info>.Value = "" Then
+                P_rating_00.ImageLocation = ""
+                P_rating_00.Visible = False
+                W_BG_00.Visible = False
+                P_Line_01.Width = 264
+                P_Line_02.Width = 264
+            Else
+                P_rating_00.ImageLocation = metadata.<eshop>.<title>.<rating_info>.<rating>.<icons>.Descendants("icon")(0).Attribute("url").Value
+                P_Line_01.Width = 212
+                P_Line_02.Width = 212
+                P_rating_00.Visible = True
+                W_BG_00.Visible = True
+            End If
+
             'Platform 
             PlatformLabel.Text = metadata.<eshop>.<title>.<platform>.<name>.Value
             BottomScreen.AutoScroll = True

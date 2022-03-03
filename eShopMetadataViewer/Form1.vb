@@ -121,10 +121,9 @@ Public Class Viewer
         currThumb = 1
         gameThumbnail.ImageLocation = image
 
-        'Set Title, discription, and price
+        'Set Title, discription
         T_softTitle_01.Text = metadata.<eshop>.<title>.<name>.Value
-        description.Text = Replace(metadata.<eshop>.<title>.<description>.Value, "<br>", vbNewLine)
-        T_price_00.Text = Dialog1.Price
+        description.Text = Replace(metadata.<eshop>.<title>.<description>.Value, "<br>", vbNewLine) \
 
         'ESBR Rating
         If metadata.<eshop>.<title>.<rating_info>.Value = "" Then
@@ -145,6 +144,9 @@ Public Class Viewer
         PlatformLabel.Text = metadata.<eshop>.<title>.<platform>.<name>.Value
         BottomScreen.AutoScroll = True
         BottomScreen.Size = New Size(320 + SystemInformation.VerticalScrollBarWidth + 2, BottomScreen.Height)
+
+        'Retail Price
+        T_price_00.Text = metadata.<eshop>.<title>.<price_on_retail>.Value
 
         'Star Rating
         Dim sRating As Double = metadata.<eshop>.<title>.<star_rating_info>.<score>.Value

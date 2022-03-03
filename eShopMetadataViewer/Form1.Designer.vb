@@ -24,27 +24,25 @@ Partial Class Viewer
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Viewer))
         Me.TopScreen = New System.Windows.Forms.Panel()
+        Me.P_line_00 = New System.Windows.Forms.PictureBox()
         Me.PlatformLabel = New System.Windows.Forms.Label()
         Me.T_price_00 = New System.Windows.Forms.Label()
+        Me.P_rating_00 = New System.Windows.Forms.PictureBox()
+        Me.W_BG_00 = New System.Windows.Forms.Panel()
+        Me.P_Line_01 = New System.Windows.Forms.PictureBox()
+        Me.P_Line_02 = New System.Windows.Forms.PictureBox()
         Me.T_softTitle_01 = New System.Windows.Forms.Label()
+        Me.gameThumbnail = New System.Windows.Forms.PictureBox()
+        Me.P_Shadow_00 = New System.Windows.Forms.PictureBox()
+        Me.P_titleBack_00 = New System.Windows.Forms.PictureBox()
         Me.BottomScreen = New System.Windows.Forms.Panel()
         Me.description = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.P_line_00 = New System.Windows.Forms.PictureBox()
-        Me.P_rating_00 = New System.Windows.Forms.PictureBox()
-        Me.W_BG_00 = New System.Windows.Forms.Panel()
-        Me.P_Line_01 = New System.Windows.Forms.PictureBox()
-        Me.P_Line_02 = New System.Windows.Forms.PictureBox()
-        Me.gameThumbnail = New System.Windows.Forms.PictureBox()
-        Me.P_Shadow_00 = New System.Windows.Forms.PictureBox()
-        Me.P_titleBack_00 = New System.Windows.Forms.PictureBox()
         Me.OpenXMLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.TopScreen.SuspendLayout()
-        Me.BottomScreen.SuspendLayout()
-        Me.MenuStrip1.SuspendLayout()
         CType(Me.P_line_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,6 +50,8 @@ Partial Class Viewer
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BottomScreen.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TopScreen
@@ -74,6 +74,18 @@ Partial Class Viewer
         Me.TopScreen.Name = "TopScreen"
         Me.TopScreen.Size = New System.Drawing.Size(400, 240)
         Me.TopScreen.TabIndex = 0
+        '
+        'P_line_00
+        '
+        Me.P_line_00.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.P_line_00.BackColor = System.Drawing.Color.Transparent
+        Me.P_line_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.line_01_color
+        Me.P_line_00.Location = New System.Drawing.Point(0, 85)
+        Me.P_line_00.Name = "P_line_00"
+        Me.P_line_00.Size = New System.Drawing.Size(400, 16)
+        Me.P_line_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.P_line_00.TabIndex = 10
+        Me.P_line_00.TabStop = False
         '
         'PlatformLabel
         '
@@ -98,6 +110,48 @@ Partial Class Viewer
         Me.T_price_00.TabIndex = 7
         Me.T_price_00.Text = "$0.00"
         '
+        'P_rating_00
+        '
+        Me.P_rating_00.BackColor = System.Drawing.Color.White
+        Me.P_rating_00.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.P_rating_00.Location = New System.Drawing.Point(344, 135)
+        Me.P_rating_00.Name = "P_rating_00"
+        Me.P_rating_00.Size = New System.Drawing.Size(48, 72)
+        Me.P_rating_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.P_rating_00.TabIndex = 0
+        Me.P_rating_00.TabStop = False
+        '
+        'W_BG_00
+        '
+        Me.W_BG_00.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.W_BG_00.BackgroundImage = CType(resources.GetObject("W_BG_00.BackgroundImage"), System.Drawing.Image)
+        Me.W_BG_00.Location = New System.Drawing.Point(342, 134)
+        Me.W_BG_00.Name = "W_BG_00"
+        Me.W_BG_00.Size = New System.Drawing.Size(52, 74)
+        Me.W_BG_00.TabIndex = 6
+        '
+        'P_Line_01
+        '
+        Me.P_Line_01.BackColor = System.Drawing.Color.Transparent
+        Me.P_Line_01.BackgroundImage = CType(resources.GetObject("P_Line_01.BackgroundImage"), System.Drawing.Image)
+        Me.P_Line_01.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.P_Line_01.Location = New System.Drawing.Point(128, 158)
+        Me.P_Line_01.Name = "P_Line_01"
+        Me.P_Line_01.Size = New System.Drawing.Size(212, 8)
+        Me.P_Line_01.TabIndex = 5
+        Me.P_Line_01.TabStop = False
+        '
+        'P_Line_02
+        '
+        Me.P_Line_02.BackColor = System.Drawing.Color.Transparent
+        Me.P_Line_02.BackgroundImage = CType(resources.GetObject("P_Line_02.BackgroundImage"), System.Drawing.Image)
+        Me.P_Line_02.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.P_Line_02.Location = New System.Drawing.Point(128, 193)
+        Me.P_Line_02.Name = "P_Line_02"
+        Me.P_Line_02.Size = New System.Drawing.Size(212, 8)
+        Me.P_Line_02.TabIndex = 4
+        Me.P_Line_02.TabStop = False
+        '
         'T_softTitle_01
         '
         Me.T_softTitle_01.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -108,6 +162,42 @@ Partial Class Viewer
         Me.T_softTitle_01.TabIndex = 3
         Me.T_softTitle_01.Text = "Title"
         Me.T_softTitle_01.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'gameThumbnail
+        '
+        Me.gameThumbnail.BackColor = System.Drawing.Color.White
+        Me.gameThumbnail.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.gameThumbnail.Location = New System.Drawing.Point(4, 98)
+        Me.gameThumbnail.Name = "gameThumbnail"
+        Me.gameThumbnail.Size = New System.Drawing.Size(112, 112)
+        Me.gameThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.gameThumbnail.TabIndex = 1
+        Me.gameThumbnail.TabStop = False
+        '
+        'P_Shadow_00
+        '
+        Me.P_Shadow_00.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.P_Shadow_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.shadow_01_96
+        Me.P_Shadow_00.Location = New System.Drawing.Point(-1, 93)
+        Me.P_Shadow_00.Margin = New System.Windows.Forms.Padding(0)
+        Me.P_Shadow_00.Name = "P_Shadow_00"
+        Me.P_Shadow_00.Size = New System.Drawing.Size(122, 122)
+        Me.P_Shadow_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.P_Shadow_00.TabIndex = 0
+        Me.P_Shadow_00.TabStop = False
+        '
+        'P_titleBack_00
+        '
+        Me.P_titleBack_00.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.P_titleBack_00.BackColor = System.Drawing.Color.Transparent
+        Me.P_titleBack_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.titleBack_00_color_resized
+        Me.P_titleBack_00.Location = New System.Drawing.Point(0, 20)
+        Me.P_titleBack_00.Margin = New System.Windows.Forms.Padding(0)
+        Me.P_titleBack_00.Name = "P_titleBack_00"
+        Me.P_titleBack_00.Size = New System.Drawing.Size(400, 78)
+        Me.P_titleBack_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.P_titleBack_00.TabIndex = 9
+        Me.P_titleBack_00.TabStop = False
         '
         'BottomScreen
         '
@@ -152,107 +242,18 @@ Partial Class Viewer
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.OpenToolStripMenuItem.Text = "Load"
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'P_line_00
-        '
-        Me.P_line_00.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.P_line_00.BackColor = System.Drawing.Color.Transparent
-        Me.P_line_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.line_01_color
-        Me.P_line_00.Location = New System.Drawing.Point(0, 85)
-        Me.P_line_00.Name = "P_line_00"
-        Me.P_line_00.Size = New System.Drawing.Size(400, 16)
-        Me.P_line_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.P_line_00.TabIndex = 10
-        Me.P_line_00.TabStop = False
-        '
-        'P_rating_00
-        '
-        Me.P_rating_00.BackColor = System.Drawing.Color.White
-        Me.P_rating_00.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.P_rating_00.Location = New System.Drawing.Point(344, 135)
-        Me.P_rating_00.Name = "P_rating_00"
-        Me.P_rating_00.Size = New System.Drawing.Size(48, 72)
-        Me.P_rating_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.P_rating_00.TabIndex = 0
-        Me.P_rating_00.TabStop = False
-        '
-        'W_BG_00
-        '
-        Me.W_BG_00.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.W_BG_00.BackgroundImage = CType(resources.GetObject("W_BG_00.BackgroundImage"), System.Drawing.Image)
-        Me.W_BG_00.Location = New System.Drawing.Point(342, 134)
-        Me.W_BG_00.Name = "W_BG_00"
-        Me.W_BG_00.Size = New System.Drawing.Size(52, 74)
-        Me.W_BG_00.TabIndex = 6
-        '
-        'P_Line_01
-        '
-        Me.P_Line_01.BackColor = System.Drawing.Color.Transparent
-        Me.P_Line_01.BackgroundImage = CType(resources.GetObject("P_Line_01.BackgroundImage"), System.Drawing.Image)
-        Me.P_Line_01.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.P_Line_01.Location = New System.Drawing.Point(128, 158)
-        Me.P_Line_01.Name = "P_Line_01"
-        Me.P_Line_01.Size = New System.Drawing.Size(212, 8)
-        Me.P_Line_01.TabIndex = 5
-        Me.P_Line_01.TabStop = False
-        '
-        'P_Line_02
-        '
-        Me.P_Line_02.BackColor = System.Drawing.Color.Transparent
-        Me.P_Line_02.BackgroundImage = CType(resources.GetObject("P_Line_02.BackgroundImage"), System.Drawing.Image)
-        Me.P_Line_02.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.P_Line_02.Location = New System.Drawing.Point(128, 193)
-        Me.P_Line_02.Name = "P_Line_02"
-        Me.P_Line_02.Size = New System.Drawing.Size(212, 8)
-        Me.P_Line_02.TabIndex = 4
-        Me.P_Line_02.TabStop = False
-        '
-        'gameThumbnail
-        '
-        Me.gameThumbnail.BackColor = System.Drawing.Color.White
-        Me.gameThumbnail.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.gameThumbnail.Location = New System.Drawing.Point(4, 98)
-        Me.gameThumbnail.Name = "gameThumbnail"
-        Me.gameThumbnail.Size = New System.Drawing.Size(112, 112)
-        Me.gameThumbnail.TabIndex = 1
-        Me.gameThumbnail.TabStop = False
-        '
-        'P_Shadow_00
-        '
-        Me.P_Shadow_00.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.P_Shadow_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.shadow_01_96
-        Me.P_Shadow_00.Location = New System.Drawing.Point(-1, 93)
-        Me.P_Shadow_00.Margin = New System.Windows.Forms.Padding(0)
-        Me.P_Shadow_00.Name = "P_Shadow_00"
-        Me.P_Shadow_00.Size = New System.Drawing.Size(122, 122)
-        Me.P_Shadow_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.P_Shadow_00.TabIndex = 0
-        Me.P_Shadow_00.TabStop = False
-        '
-        'P_titleBack_00
-        '
-        Me.P_titleBack_00.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.P_titleBack_00.BackColor = System.Drawing.Color.Transparent
-        Me.P_titleBack_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.titleBack_00_color_resized
-        Me.P_titleBack_00.Location = New System.Drawing.Point(0, 20)
-        Me.P_titleBack_00.Margin = New System.Windows.Forms.Padding(0)
-        Me.P_titleBack_00.Name = "P_titleBack_00"
-        Me.P_titleBack_00.Size = New System.Drawing.Size(400, 78)
-        Me.P_titleBack_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.P_titleBack_00.TabIndex = 9
-        Me.P_titleBack_00.TabStop = False
         '
         'OpenXMLToolStripMenuItem
         '
         Me.OpenXMLToolStripMenuItem.Name = "OpenXMLToolStripMenuItem"
-        Me.OpenXMLToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenXMLToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.OpenXMLToolStripMenuItem.Text = "Open XML"
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'Viewer
         '
@@ -271,10 +272,6 @@ Partial Class Viewer
         Me.Name = "Viewer"
         Me.Text = "eShop Metadata Viewer"
         Me.TopScreen.ResumeLayout(False)
-        Me.BottomScreen.ResumeLayout(False)
-        Me.BottomScreen.PerformLayout()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         CType(Me.P_line_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).EndInit()
@@ -282,6 +279,10 @@ Partial Class Viewer
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BottomScreen.ResumeLayout(False)
+        Me.BottomScreen.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

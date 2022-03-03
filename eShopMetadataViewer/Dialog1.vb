@@ -4,7 +4,6 @@ Imports System.Xml
 
 Public Class Dialog1
     Public Property ID As String
-    Public Property Price As String
     Public fetchList = True
     Public nodeList
     's
@@ -60,14 +59,6 @@ Public Class Dialog1
         Else
             Me.ID = TextBox1.Text
         End If
-
-        'Get Price
-        For Each node As XElement In nodeList
-            'check if the contentID matchs
-            If node.Element("title").Attribute("id").Value = Me.ID Then
-                Me.Price = node.<price_on_retail>.Value
-            End If
-        Next
 
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.Close()

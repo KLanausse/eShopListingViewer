@@ -25,10 +25,6 @@ Partial Class Viewer
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Viewer))
         Me.BottomScreen = New System.Windows.Forms.Panel()
         Me.description = New System.Windows.Forms.Label()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenXMLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.TopScreen = New System.Windows.Forms.Panel()
         Me.StatusBar = New System.Windows.Forms.Panel()
@@ -44,8 +40,12 @@ Partial Class Viewer
         Me.gameThumbnail = New System.Windows.Forms.PictureBox()
         Me.P_Shadow_00 = New System.Windows.Forms.PictureBox()
         Me.P_titleBack_00 = New System.Windows.Forms.PictureBox()
+        Me.T_Day_00 = New System.Windows.Forms.Label()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenXMLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BottomScreen.SuspendLayout()
-        Me.MenuStrip1.SuspendLayout()
         Me.TopScreen.SuspendLayout()
         Me.StatusBar.SuspendLayout()
         CType(Me.InternetBar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,6 +56,7 @@ Partial Class Viewer
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BottomScreen
@@ -82,34 +83,6 @@ Partial Class Viewer
         Me.description.Text = "description"
         Me.description.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(400, 24)
-        Me.MenuStrip1.TabIndex = 2
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'FileToolStripMenuItem
-        '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.OpenXMLToolStripMenuItem})
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
-        Me.FileToolStripMenuItem.Text = "File"
-        '
-        'OpenToolStripMenuItem
-        '
-        Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
-        Me.OpenToolStripMenuItem.Text = "Load"
-        '
-        'OpenXMLToolStripMenuItem
-        '
-        Me.OpenXMLToolStripMenuItem.Name = "OpenXMLToolStripMenuItem"
-        Me.OpenXMLToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
-        Me.OpenXMLToolStripMenuItem.Text = "Open XML"
-        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
@@ -130,6 +103,7 @@ Partial Class Viewer
         Me.TopScreen.Controls.Add(Me.gameThumbnail)
         Me.TopScreen.Controls.Add(Me.P_Shadow_00)
         Me.TopScreen.Controls.Add(Me.P_titleBack_00)
+        Me.TopScreen.Controls.Add(Me.T_Day_00)
         Me.TopScreen.Dock = System.Windows.Forms.DockStyle.Top
         Me.TopScreen.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TopScreen.Location = New System.Drawing.Point(0, 24)
@@ -216,22 +190,24 @@ Partial Class Viewer
         'P_Line_01
         '
         Me.P_Line_01.BackColor = System.Drawing.Color.Transparent
-        Me.P_Line_01.BackgroundImage = CType(resources.GetObject("P_Line_01.BackgroundImage"), System.Drawing.Image)
         Me.P_Line_01.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.P_Line_01.Image = Global.eShopMetadataViewer.My.Resources.Resources.line_00_ext
         Me.P_Line_01.Location = New System.Drawing.Point(128, 158)
         Me.P_Line_01.Name = "P_Line_01"
         Me.P_Line_01.Size = New System.Drawing.Size(212, 8)
+        Me.P_Line_01.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.P_Line_01.TabIndex = 5
         Me.P_Line_01.TabStop = False
         '
         'P_Line_02
         '
         Me.P_Line_02.BackColor = System.Drawing.Color.Transparent
-        Me.P_Line_02.BackgroundImage = CType(resources.GetObject("P_Line_02.BackgroundImage"), System.Drawing.Image)
         Me.P_Line_02.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.P_Line_02.Image = Global.eShopMetadataViewer.My.Resources.Resources.line_00_ext
         Me.P_Line_02.Location = New System.Drawing.Point(128, 193)
         Me.P_Line_02.Name = "P_Line_02"
         Me.P_Line_02.Size = New System.Drawing.Size(212, 8)
+        Me.P_Line_02.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.P_Line_02.TabIndex = 4
         Me.P_Line_02.TabStop = False
         '
@@ -282,6 +258,48 @@ Partial Class Viewer
         Me.P_titleBack_00.TabIndex = 9
         Me.P_titleBack_00.TabStop = False
         '
+        'T_Day_00
+        '
+        Me.T_Day_00.BackColor = System.Drawing.Color.Transparent
+        Me.T_Day_00.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.T_Day_00.ForeColor = System.Drawing.Color.FromArgb(CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.T_Day_00.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.T_Day_00.Location = New System.Drawing.Point(128, 182)
+        Me.T_Day_00.Margin = New System.Windows.Forms.Padding(0)
+        Me.T_Day_00.Name = "T_Day_00"
+        Me.T_Day_00.Size = New System.Drawing.Size(212, 30)
+        Me.T_Day_00.TabIndex = 11
+        Me.T_Day_00.Text = "Release Date"
+        Me.T_Day_00.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(400, 24)
+        Me.MenuStrip1.TabIndex = 3
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'FileToolStripMenuItem
+        '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.OpenXMLToolStripMenuItem})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Text = "File"
+        '
+        'OpenToolStripMenuItem
+        '
+        Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.OpenToolStripMenuItem.Text = "Load"
+        '
+        'OpenXMLToolStripMenuItem
+        '
+        Me.OpenXMLToolStripMenuItem.Name = "OpenXMLToolStripMenuItem"
+        Me.OpenXMLToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.OpenXMLToolStripMenuItem.Text = "Open XML"
+        '
         'Viewer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -293,15 +311,12 @@ Partial Class Viewer
         Me.Controls.Add(Me.TopScreen)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MainMenuStrip = Me.MenuStrip1
         Me.MaximumSize = New System.Drawing.Size(416, 543)
         Me.MinimumSize = New System.Drawing.Size(416, 543)
         Me.Name = "Viewer"
         Me.Text = "eShop Metadata Viewer"
         Me.BottomScreen.ResumeLayout(False)
         Me.BottomScreen.PerformLayout()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.TopScreen.ResumeLayout(False)
         Me.StatusBar.ResumeLayout(False)
         Me.StatusBar.PerformLayout()
@@ -313,6 +328,8 @@ Partial Class Viewer
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -321,9 +338,6 @@ Partial Class Viewer
     Friend WithEvents BottomScreen As System.Windows.Forms.Panel
     Friend WithEvents gameThumbnail As System.Windows.Forms.PictureBox
     Friend WithEvents P_Shadow_00 As System.Windows.Forms.PictureBox
-    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
-    Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents OpenToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents T_softTitle_01 As Label
     Friend WithEvents description As Label
@@ -335,7 +349,11 @@ Partial Class Viewer
     Friend WithEvents PlatformLabel As Label
     Friend WithEvents P_titleBack_00 As PictureBox
     Friend WithEvents P_line_00 As PictureBox
-    Friend WithEvents OpenXMLToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StatusBar As Panel
     Friend WithEvents InternetBar As PictureBox
+    Friend WithEvents T_Day_00 As Label
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenXMLToolStripMenuItem As ToolStripMenuItem
 End Class

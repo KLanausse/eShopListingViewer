@@ -26,7 +26,7 @@ Public Class Viewer
     End Sub
 
     'Toolbars
-    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
+    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'Vars
         Dim metadata As XDocument
         Dim webErr As Boolean
@@ -65,7 +65,7 @@ Public Class Viewer
 
     End Sub
 
-    Private Sub OpenXMLToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenXMLToolStripMenuItem.Click
+    Private Sub OpenXMLToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Dim metadata As XDocument
         OpenFileDialog1.Filter = "XML|*.xml"
         OpenFileDialog1.ShowDialog()
@@ -94,7 +94,9 @@ Public Class Viewer
         paintTransparentImages({
             P_titleBack_00,
             P_line_00,
-            P_Shadow_00
+            P_Shadow_00,
+            P_Line_01,
+            P_Line_02
         }, e)
     End Sub
 
@@ -103,6 +105,8 @@ Public Class Viewer
             InternetBar
         }, e)
     End Sub
+
+
 
     'Functions
     Function paintTransparentImages(pictureBoxes As Array, e As PaintEventArgs)

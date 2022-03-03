@@ -124,13 +124,16 @@
   <data name="TopScreenBG.ext" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TopScreenBG.ext.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="P_NetModel-Full" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\P_NetModel-Full.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="shadow_01.96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shadow_01.96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="titleBack_00.color.resized" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\titleBack_00.color.resized.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="P_NetModel-Full" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\P_NetModel-Full.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="line_00.ext" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\line_00.ext.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

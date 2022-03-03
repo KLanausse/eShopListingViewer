@@ -13,6 +13,15 @@ Public Class Viewer
 
     Private Sub Form1_Open(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
 
+        ' Ignore SSL Errors
+        System.Net.ServicePointManager.ServerCertificateValidationCallback =
+  Function(se As Object,
+  cert As System.Security.Cryptography.X509Certificates.X509Certificate,
+  chain As System.Security.Cryptography.X509Certificates.X509Chain,
+  sslerror As System.Net.Security.SslPolicyErrors) True
+
+        'Restore SSL Certificate Validation Checking
+        'System.Net.ServicePointManager.ServerCertificateValidationCallback = Nothing
 
     End Sub
 
@@ -22,12 +31,6 @@ Public Class Viewer
         Dim metadata As XDocument
         Dim webErr As Boolean
 
-        ' Ignore SSL Errors
-        System.Net.ServicePointManager.ServerCertificateValidationCallback =
-  Function(se As Object,
-  cert As System.Security.Cryptography.X509Certificates.X509Certificate,
-  chain As System.Security.Cryptography.X509Certificates.X509Chain,
-  sslerror As System.Net.Security.SslPolicyErrors) True
 
 
         'Load metadata
@@ -59,8 +62,7 @@ Public Class Viewer
 
         End If
 
-        'Restore SSL Certificate Validation Checking
-        'System.Net.ServicePointManager.ServerCertificateValidationCallback = Nothing
+
     End Sub
 
     Private Sub OpenXMLToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenXMLToolStripMenuItem.Click

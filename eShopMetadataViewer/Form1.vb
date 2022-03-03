@@ -4,7 +4,7 @@ Imports System.Net
 Public Class Viewer
     Public Property version As String = "0.3"
     'MM/DD/YYYY
-    Public Property creationDate As String = "3/3/2022 - 11:23 EST"
+    Public Property CreationDate As String = "3/3/2022 - 11:23 EST"
 
     'Public Vars
     Public currThumb = 1
@@ -36,32 +36,35 @@ Public Class Viewer
         'Load metadata
         Dialog1.ShowDialog()
 
-        'Load content metadata
-        Try
-            metadata = XDocument.Load("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/title/" + Dialog1.ID + "/?shop_id=1")
-            webErr = False
-        Catch ex As WebException
-            Using reader As New StreamReader(ex.Response.GetResponseStream())
-                metadata = XDocument.Parse(reader.ReadToEnd())
-                MsgBox(metadata.<eshop>.<error>.<message>.Value, vbCritical Or vbOK, "Error " + metadata.<eshop>.<error>.<code>.Value)
-            End Using
-            webErr = True
-        End Try
+        If Dialog1.DialogResult() = System.Windows.Forms.DialogResult.OK Then
 
-        'Setup page with the Metadata info
-        If Not webErr Then
+            'Load content metadata
+            Try
+                metadata = XDocument.Load("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/title/" + Dialog1.ID + "/?shop_id=1")
+                webErr = False
+            Catch ex As WebException
+                Using reader As New StreamReader(ex.Response.GetResponseStream())
+                    metadata = XDocument.Parse(reader.ReadToEnd())
+                    MsgBox(metadata.<eshop>.<error>.<message>.Value, vbCritical Or vbOK, "Error " + metadata.<eshop>.<error>.<code>.Value)
+                End Using
+                webErr = True
+            End Try
 
-            displayData(metadata)
+            'Setup page with the Metadata info
+            If Not webErr Then
 
-        Else
-            gameThumbnail.ImageLocation = Nothing
-            T_softTitle_01.Text = Nothing
-            P_rating_00.ImageLocation = Nothing
-            description.Text = Nothing
-            BottomScreen.Size = New Size(320, BottomScreen.Height)
+                DisplayData(metadata)
+
+            Else
+                gameThumbnail.ImageLocation = Nothing
+                T_softTitle_01.Text = Nothing
+                P_rating_00.ImageLocation = Nothing
+                description.Text = Nothing
+                BottomScreen.Size = New Size(320, BottomScreen.Height)
+
+            End If
 
         End If
-
 
     End Sub
 
@@ -69,9 +72,10 @@ Public Class Viewer
         Dim metadata As XDocument
         OpenFileDialog1.Filter = "XML|*.xml"
         OpenFileDialog1.ShowDialog()
+
         Try
             metadata = XDocument.Load(OpenFileDialog1.FileName())
-            displayData(metadata)
+            DisplayData(metadata)
         Catch ex As Exception
             MsgBox("Error reading XML", vbCritical Or vbOK, "Error")
         End Try
@@ -91,7 +95,7 @@ Public Class Viewer
 
     'Image Painting
     Sub Form_Paint1(s As Object, e As PaintEventArgs) Handles TopScreen.Paint
-        paintTransparentImages({
+        PaintTransparentImages({
             P_titleBack_00,
             P_line_00,
             P_Shadow_00,
@@ -101,7 +105,7 @@ Public Class Viewer
     End Sub
 
     Sub Form_Paint2(s As Object, e As PaintEventArgs) Handles StatusBar.Paint
-        paintTransparentImages({
+        PaintTransparentImages({
             InternetBar
         }, e)
     End Sub
@@ -109,15 +113,17 @@ Public Class Viewer
 
 
     'Functions
-    Function paintTransparentImages(pictureBoxes As Array, e As PaintEventArgs)
+    Function PaintTransparentImages(pictureBoxes As Array, e As PaintEventArgs)
         For Each item As Object In pictureBoxes
             Dim r As New Rectangle(item.Location.X, item.Location.Y, item.Width, item.Height)
             e.Graphics.DrawImage(item.Image, r)
             item.Visible = False
         Next
+
+        Return 0
     End Function
 
-    Function displayData(metadata As XDocument)
+    Function DisplayData(metadata As XDocument)
 
         'Find and get the Thumbnails
         Dim thumbList = metadata.Descendants("thumbnail")

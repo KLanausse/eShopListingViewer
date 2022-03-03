@@ -26,7 +26,7 @@ Public Class Viewer
     End Sub
 
     'Toolbars
-    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs)
+    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
         'Vars
         Dim metadata As XDocument
         Dim webErr As Boolean
@@ -65,7 +65,7 @@ Public Class Viewer
 
     End Sub
 
-    Private Sub OpenXMLToolStripMenuItem_Click(sender As Object, e As EventArgs)
+    Private Sub OpenXMLToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenXMLToolStripMenuItem.Click
         Dim metadata As XDocument
         OpenFileDialog1.Filter = "XML|*.xml"
         OpenFileDialog1.ShowDialog()
@@ -126,8 +126,6 @@ Public Class Viewer
             thumbnailCount += 1
             Array.Resize(thumbnails, thumbnailCount)
             thumbnails(thumbnailCount - 1) = node.Attribute("url").Value
-            Console.WriteLine(thumbnails(thumbnailCount - 1))
-            Console.WriteLine(thumbnailCount)
         Next
         '   Set Game Image
         Dim image = thumbnails(0)
@@ -164,6 +162,9 @@ Public Class Viewer
         'Star Rating
         Dim sRating As Double = metadata.<eshop>.<title>.<star_rating_info>.<score>.Value
         Console.WriteLine(Math.Round(sRating))
+
+        'Release Date
+        T_Day_01.Text = Replace(metadata.<eshop>.<title>.<release_date_on_eshop>.Value, "-", "/")
 
         Return 0
     End Function

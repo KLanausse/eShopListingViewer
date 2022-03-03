@@ -27,6 +27,7 @@ Partial Class Viewer
         Me.description = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.TopScreen = New System.Windows.Forms.Panel()
+        Me.T_Day_01 = New System.Windows.Forms.Label()
         Me.StatusBar = New System.Windows.Forms.Panel()
         Me.InternetBar = New System.Windows.Forms.PictureBox()
         Me.P_line_00 = New System.Windows.Forms.PictureBox()
@@ -91,6 +92,7 @@ Partial Class Viewer
         '
         Me.TopScreen.BackColor = System.Drawing.Color.LightGoldenrodYellow
         Me.TopScreen.BackgroundImage = Global.eShopMetadataViewer.My.Resources.Resources.TopScreenBG_ext
+        Me.TopScreen.Controls.Add(Me.T_Day_01)
         Me.TopScreen.Controls.Add(Me.StatusBar)
         Me.TopScreen.Controls.Add(Me.P_line_00)
         Me.TopScreen.Controls.Add(Me.PlatformLabel)
@@ -110,6 +112,20 @@ Partial Class Viewer
         Me.TopScreen.Name = "TopScreen"
         Me.TopScreen.Size = New System.Drawing.Size(400, 240)
         Me.TopScreen.TabIndex = 0
+        '
+        'T_Day_01
+        '
+        Me.T_Day_01.BackColor = System.Drawing.Color.Transparent
+        Me.T_Day_01.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.T_Day_01.ForeColor = System.Drawing.Color.FromArgb(CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.T_Day_01.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.T_Day_01.Location = New System.Drawing.Point(234, 197)
+        Me.T_Day_01.Margin = New System.Windows.Forms.Padding(0)
+        Me.T_Day_01.Name = "T_Day_01"
+        Me.T_Day_01.Size = New System.Drawing.Size(106, 15)
+        Me.T_Day_01.TabIndex = 12
+        Me.T_Day_01.Text = "2011/1/1"
+        Me.T_Day_01.TextAlign = System.Drawing.ContentAlignment.BottomRight
         '
         'StatusBar
         '
@@ -291,13 +307,13 @@ Partial Class Viewer
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.OpenToolStripMenuItem.Text = "Load"
         '
         'OpenXMLToolStripMenuItem
         '
         Me.OpenXMLToolStripMenuItem.Name = "OpenXMLToolStripMenuItem"
-        Me.OpenXMLToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.OpenXMLToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.OpenXMLToolStripMenuItem.Text = "Open XML"
         '
         'Viewer
@@ -356,4 +372,5 @@ Partial Class Viewer
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenXMLToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents T_Day_01 As Label
 End Class

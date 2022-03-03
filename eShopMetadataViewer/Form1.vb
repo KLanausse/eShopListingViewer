@@ -2,24 +2,21 @@
 Imports System.Net
 
 Public Class Viewer
-    Public Property version As String = "0.2.6"
+    Public Property version As String = "0.3"
     'MM/DD/YYYY
-    Public Property creationDate As String = "3/2/2022 - 11:23 EST"
+    Public Property creationDate As String = "3/3/2022 - 11:23 EST"
 
     'Public Vars
     Public currThumb = 1
     Public thumbnails(1) As String
 
-    Private Sub Viewer_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Private Sub Form1_Open(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
 
 
     End Sub
 
-
+    'Toolbars
     Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
         'Vars
         Dim metadata As XDocument
@@ -51,45 +48,8 @@ Public Class Viewer
         'Setup page with the Metadata info
         If Not webErr Then
 
-            'Find and get the Thumbnails
-            Dim thumbList = metadata.Descendants("thumbnail")
-            Dim thumbnailCount = 0
-            For Each node As XElement In thumbList
-                thumbnailCount += 1
-                Array.Resize(thumbnails, thumbnailCount)
-                thumbnails(thumbnailCount - 1) = node.Attribute("url").Value
-                Console.WriteLine(thumbnails(thumbnailCount - 1))
-                Console.WriteLine(thumbnailCount)
-            Next
-            '   Set Game Image
-            Dim image = thumbnails(0)
-            currThumb = 1
-            gameThumbnail.ImageLocation = image
+            displayData(metadata)
 
-            'Set Title, discription, and price
-            T_softTitle_01.Text = metadata.<eshop>.<title>.<name>.Value
-            description.Text = Replace(metadata.<eshop>.<title>.<description>.Value, "<br>", vbNewLine)
-            T_price_00.Text = Dialog1.Price
-
-            'ESBR Rating
-            If metadata.<eshop>.<title>.<rating_info>.Value = "" Then
-                P_rating_00.ImageLocation = ""
-                P_rating_00.Visible = False
-                W_BG_00.Visible = False
-                P_Line_01.Width = 264
-                P_Line_02.Width = 264
-            Else
-                P_rating_00.ImageLocation = metadata.<eshop>.<title>.<rating_info>.<rating>.<icons>.Descendants("icon")(0).Attribute("url").Value
-                P_Line_01.Width = 212
-                P_Line_02.Width = 212
-                P_rating_00.Visible = True
-                W_BG_00.Visible = True
-            End If
-
-            'Platform 
-            PlatformLabel.Text = metadata.<eshop>.<title>.<platform>.<name>.Value
-            BottomScreen.AutoScroll = True
-            BottomScreen.Size = New Size(320 + SystemInformation.VerticalScrollBarWidth + 2, BottomScreen.Height)
         Else
             gameThumbnail.ImageLocation = Nothing
             T_softTitle_01.Text = Nothing
@@ -103,6 +63,20 @@ Public Class Viewer
         'System.Net.ServicePointManager.ServerCertificateValidationCallback = Nothing
     End Sub
 
+    Private Sub OpenXMLToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenXMLToolStripMenuItem.Click
+        Dim metadata As XDocument
+        OpenFileDialog1.Filter = "XML|*.xml"
+        OpenFileDialog1.ShowDialog()
+        Try
+            metadata = XDocument.Load(OpenFileDialog1.FileName())
+            displayData(metadata)
+        Catch ex As Exception
+            MsgBox("Error reading XML", vbCritical Or vbOK, "Error")
+        End Try
+
+    End Sub
+
+
     Private Sub GameThumbnail_Click(sender As Object, e As EventArgs) Handles gameThumbnail.Click
         currThumb += 1
         If currThumb > thumbnails.Length Then
@@ -115,7 +89,11 @@ Public Class Viewer
 
     'Image Painting
     Sub Form_Paint(s As Object, e As PaintEventArgs) Handles TopScreen.Paint
-        Dim pictureBoxes = {P_titleBack_00, P_Shadow_00}
+        Dim pictureBoxes = {
+            P_titleBack_00,
+            P_line_00,
+            P_Shadow_00
+        }
 
         For Each item As Object In pictureBoxes
             Dim r As New Rectangle(item.Location.X, item.Location.Y, item.Width, item.Height)
@@ -126,5 +104,53 @@ Public Class Viewer
 
     End Sub
 
+    Function displayData(metadata As XDocument)
+
+        'Find and get the Thumbnails
+        Dim thumbList = metadata.Descendants("thumbnail")
+        Dim thumbnailCount = 0
+        For Each node As XElement In thumbList
+            thumbnailCount += 1
+            Array.Resize(thumbnails, thumbnailCount)
+            thumbnails(thumbnailCount - 1) = node.Attribute("url").Value
+            Console.WriteLine(thumbnails(thumbnailCount - 1))
+            Console.WriteLine(thumbnailCount)
+        Next
+        '   Set Game Image
+        Dim image = thumbnails(0)
+        currThumb = 1
+        gameThumbnail.ImageLocation = image
+
+        'Set Title, discription, and price
+        T_softTitle_01.Text = metadata.<eshop>.<title>.<name>.Value
+        description.Text = Replace(metadata.<eshop>.<title>.<description>.Value, "<br>", vbNewLine)
+        T_price_00.Text = Dialog1.Price
+
+        'ESBR Rating
+        If metadata.<eshop>.<title>.<rating_info>.Value = "" Then
+            P_rating_00.ImageLocation = ""
+            P_rating_00.Visible = False
+            W_BG_00.Visible = False
+            P_Line_01.Width = 264
+            P_Line_02.Width = 264
+        Else
+            P_rating_00.ImageLocation = metadata.<eshop>.<title>.<rating_info>.<rating>.<icons>.Descendants("icon")(0).Attribute("url").Value
+            P_Line_01.Width = 212
+            P_Line_02.Width = 212
+            P_rating_00.Visible = True
+            W_BG_00.Visible = True
+        End If
+
+        'Platform 
+        PlatformLabel.Text = metadata.<eshop>.<title>.<platform>.<name>.Value
+        BottomScreen.AutoScroll = True
+        BottomScreen.Size = New Size(320 + SystemInformation.VerticalScrollBarWidth + 2, BottomScreen.Height)
+
+        'Star Rating
+        Dim sRating As Double = metadata.<eshop>.<title>.<star_rating_info>.<score>.Value
+        Console.WriteLine(Math.Round(sRating))
+
+        Return 0
+    End Function
 
 End Class

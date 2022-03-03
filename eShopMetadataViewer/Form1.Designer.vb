@@ -26,34 +26,38 @@ Partial Class Viewer
         Me.TopScreen = New System.Windows.Forms.Panel()
         Me.PlatformLabel = New System.Windows.Forms.Label()
         Me.T_price_00 = New System.Windows.Forms.Label()
-        Me.P_rating_00 = New System.Windows.Forms.PictureBox()
-        Me.W_BG_00 = New System.Windows.Forms.Panel()
-        Me.P_Line_01 = New System.Windows.Forms.PictureBox()
-        Me.P_Line_02 = New System.Windows.Forms.PictureBox()
         Me.T_softTitle_01 = New System.Windows.Forms.Label()
-        Me.gameThumbnail = New System.Windows.Forms.PictureBox()
-        Me.P_Shadow_00 = New System.Windows.Forms.PictureBox()
-        Me.P_titleBack_00 = New System.Windows.Forms.PictureBox()
         Me.BottomScreen = New System.Windows.Forms.Panel()
         Me.description = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.P_line_00 = New System.Windows.Forms.PictureBox()
+        Me.P_rating_00 = New System.Windows.Forms.PictureBox()
+        Me.W_BG_00 = New System.Windows.Forms.Panel()
+        Me.P_Line_01 = New System.Windows.Forms.PictureBox()
+        Me.P_Line_02 = New System.Windows.Forms.PictureBox()
+        Me.gameThumbnail = New System.Windows.Forms.PictureBox()
+        Me.P_Shadow_00 = New System.Windows.Forms.PictureBox()
+        Me.P_titleBack_00 = New System.Windows.Forms.PictureBox()
+        Me.OpenXMLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TopScreen.SuspendLayout()
+        Me.BottomScreen.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
+        CType(Me.P_line_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Line_02, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.BottomScreen.SuspendLayout()
-        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TopScreen
         '
         Me.TopScreen.BackColor = System.Drawing.Color.LightGoldenrodYellow
+        Me.TopScreen.Controls.Add(Me.P_line_00)
         Me.TopScreen.Controls.Add(Me.PlatformLabel)
         Me.TopScreen.Controls.Add(Me.T_price_00)
         Me.TopScreen.Controls.Add(Me.P_rating_00)
@@ -93,6 +97,79 @@ Partial Class Viewer
         Me.T_price_00.Size = New System.Drawing.Size(96, 21)
         Me.T_price_00.TabIndex = 7
         Me.T_price_00.Text = "$0.00"
+        '
+        'T_softTitle_01
+        '
+        Me.T_softTitle_01.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.T_softTitle_01.ForeColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.T_softTitle_01.Location = New System.Drawing.Point(63, 37)
+        Me.T_softTitle_01.Name = "T_softTitle_01"
+        Me.T_softTitle_01.Size = New System.Drawing.Size(274, 42)
+        Me.T_softTitle_01.TabIndex = 3
+        Me.T_softTitle_01.Text = "Title"
+        Me.T_softTitle_01.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'BottomScreen
+        '
+        Me.BottomScreen.BackColor = System.Drawing.Color.Ivory
+        Me.BottomScreen.Controls.Add(Me.description)
+        Me.BottomScreen.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.BottomScreen.Location = New System.Drawing.Point(40, 264)
+        Me.BottomScreen.Name = "BottomScreen"
+        Me.BottomScreen.Size = New System.Drawing.Size(320, 240)
+        Me.BottomScreen.TabIndex = 1
+        '
+        'description
+        '
+        Me.description.AutoSize = True
+        Me.description.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.description.Location = New System.Drawing.Point(10, 0)
+        Me.description.Margin = New System.Windows.Forms.Padding(0)
+        Me.description.MaximumSize = New System.Drawing.Size(312, 0)
+        Me.description.MinimumSize = New System.Drawing.Size(300, 240)
+        Me.description.Name = "description"
+        Me.description.Size = New System.Drawing.Size(300, 240)
+        Me.description.TabIndex = 0
+        Me.description.Text = "description"
+        Me.description.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(400, 24)
+        Me.MenuStrip1.TabIndex = 2
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'FileToolStripMenuItem
+        '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.OpenXMLToolStripMenuItem})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Text = "File"
+        '
+        'OpenToolStripMenuItem
+        '
+        Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenToolStripMenuItem.Text = "Load"
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'P_line_00
+        '
+        Me.P_line_00.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.P_line_00.BackColor = System.Drawing.Color.Transparent
+        Me.P_line_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.line_01_color
+        Me.P_line_00.Location = New System.Drawing.Point(0, 85)
+        Me.P_line_00.Name = "P_line_00"
+        Me.P_line_00.Size = New System.Drawing.Size(400, 16)
+        Me.P_line_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.P_line_00.TabIndex = 10
+        Me.P_line_00.TabStop = False
         '
         'P_rating_00
         '
@@ -136,17 +213,6 @@ Partial Class Viewer
         Me.P_Line_02.TabIndex = 4
         Me.P_Line_02.TabStop = False
         '
-        'T_softTitle_01
-        '
-        Me.T_softTitle_01.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.T_softTitle_01.ForeColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(35, Byte), Integer))
-        Me.T_softTitle_01.Location = New System.Drawing.Point(63, 37)
-        Me.T_softTitle_01.Name = "T_softTitle_01"
-        Me.T_softTitle_01.Size = New System.Drawing.Size(274, 42)
-        Me.T_softTitle_01.TabIndex = 3
-        Me.T_softTitle_01.Text = "Title"
-        Me.T_softTitle_01.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'gameThumbnail
         '
         Me.gameThumbnail.BackColor = System.Drawing.Color.White
@@ -182,55 +248,11 @@ Partial Class Viewer
         Me.P_titleBack_00.TabIndex = 9
         Me.P_titleBack_00.TabStop = False
         '
-        'BottomScreen
+        'OpenXMLToolStripMenuItem
         '
-        Me.BottomScreen.BackColor = System.Drawing.Color.Ivory
-        Me.BottomScreen.Controls.Add(Me.description)
-        Me.BottomScreen.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.BottomScreen.Location = New System.Drawing.Point(40, 264)
-        Me.BottomScreen.Name = "BottomScreen"
-        Me.BottomScreen.Size = New System.Drawing.Size(320, 240)
-        Me.BottomScreen.TabIndex = 1
-        '
-        'description
-        '
-        Me.description.AutoSize = True
-        Me.description.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.description.Location = New System.Drawing.Point(10, 0)
-        Me.description.Margin = New System.Windows.Forms.Padding(0)
-        Me.description.MaximumSize = New System.Drawing.Size(312, 0)
-        Me.description.MinimumSize = New System.Drawing.Size(300, 240)
-        Me.description.Name = "description"
-        Me.description.Size = New System.Drawing.Size(300, 240)
-        Me.description.TabIndex = 0
-        Me.description.Text = "description"
-        Me.description.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(400, 24)
-        Me.MenuStrip1.TabIndex = 2
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'FileToolStripMenuItem
-        '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem})
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
-        Me.FileToolStripMenuItem.Text = "File"
-        '
-        'OpenToolStripMenuItem
-        '
-        Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
-        Me.OpenToolStripMenuItem.Text = "Open"
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        Me.OpenXMLToolStripMenuItem.Name = "OpenXMLToolStripMenuItem"
+        Me.OpenXMLToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenXMLToolStripMenuItem.Text = "Open XML"
         '
         'Viewer
         '
@@ -249,16 +271,17 @@ Partial Class Viewer
         Me.Name = "Viewer"
         Me.Text = "eShop Metadata Viewer"
         Me.TopScreen.ResumeLayout(False)
+        Me.BottomScreen.ResumeLayout(False)
+        Me.BottomScreen.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
+        CType(Me.P_line_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Line_02, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.BottomScreen.ResumeLayout(False)
-        Me.BottomScreen.PerformLayout()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -280,4 +303,6 @@ Partial Class Viewer
     Friend WithEvents T_price_00 As Label
     Friend WithEvents PlatformLabel As Label
     Friend WithEvents P_titleBack_00 As PictureBox
+    Friend WithEvents P_line_00 As PictureBox
+    Friend WithEvents OpenXMLToolStripMenuItem As ToolStripMenuItem
 End Class

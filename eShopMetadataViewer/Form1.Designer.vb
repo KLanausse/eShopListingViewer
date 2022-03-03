@@ -23,10 +23,6 @@ Partial Class Viewer
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Viewer))
-        Me.TopScreen = New System.Windows.Forms.Panel()
-        Me.PlatformLabel = New System.Windows.Forms.Label()
-        Me.T_price_00 = New System.Windows.Forms.Label()
-        Me.T_softTitle_01 = New System.Windows.Forms.Label()
         Me.BottomScreen = New System.Windows.Forms.Panel()
         Me.description = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -34,17 +30,25 @@ Partial Class Viewer
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenXMLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.TopScreen = New System.Windows.Forms.Panel()
+        Me.StatusBar = New System.Windows.Forms.Panel()
+        Me.InternetBar = New System.Windows.Forms.PictureBox()
         Me.P_line_00 = New System.Windows.Forms.PictureBox()
+        Me.PlatformLabel = New System.Windows.Forms.Label()
+        Me.T_price_00 = New System.Windows.Forms.Label()
         Me.P_rating_00 = New System.Windows.Forms.PictureBox()
         Me.W_BG_00 = New System.Windows.Forms.Panel()
         Me.P_Line_01 = New System.Windows.Forms.PictureBox()
         Me.P_Line_02 = New System.Windows.Forms.PictureBox()
+        Me.T_softTitle_01 = New System.Windows.Forms.Label()
         Me.gameThumbnail = New System.Windows.Forms.PictureBox()
         Me.P_Shadow_00 = New System.Windows.Forms.PictureBox()
         Me.P_titleBack_00 = New System.Windows.Forms.PictureBox()
-        Me.TopScreen.SuspendLayout()
         Me.BottomScreen.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        Me.TopScreen.SuspendLayout()
+        Me.StatusBar.SuspendLayout()
+        CType(Me.InternetBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_line_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,62 +57,6 @@ Partial Class Viewer
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'TopScreen
-        '
-        Me.TopScreen.BackColor = System.Drawing.Color.LightGoldenrodYellow
-        Me.TopScreen.BackgroundImage = Global.eShopMetadataViewer.My.Resources.Resources.TopScreenBG_ext
-        Me.TopScreen.Controls.Add(Me.P_line_00)
-        Me.TopScreen.Controls.Add(Me.PlatformLabel)
-        Me.TopScreen.Controls.Add(Me.T_price_00)
-        Me.TopScreen.Controls.Add(Me.P_rating_00)
-        Me.TopScreen.Controls.Add(Me.W_BG_00)
-        Me.TopScreen.Controls.Add(Me.P_Line_01)
-        Me.TopScreen.Controls.Add(Me.P_Line_02)
-        Me.TopScreen.Controls.Add(Me.T_softTitle_01)
-        Me.TopScreen.Controls.Add(Me.gameThumbnail)
-        Me.TopScreen.Controls.Add(Me.P_Shadow_00)
-        Me.TopScreen.Controls.Add(Me.P_titleBack_00)
-        Me.TopScreen.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TopScreen.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TopScreen.Location = New System.Drawing.Point(0, 24)
-        Me.TopScreen.Name = "TopScreen"
-        Me.TopScreen.Size = New System.Drawing.Size(400, 240)
-        Me.TopScreen.TabIndex = 0
-        '
-        'PlatformLabel
-        '
-        Me.PlatformLabel.AutoEllipsis = True
-        Me.PlatformLabel.BackColor = System.Drawing.Color.Transparent
-        Me.PlatformLabel.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.PlatformLabel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.PlatformLabel.Location = New System.Drawing.Point(128, 160)
-        Me.PlatformLabel.Name = "PlatformLabel"
-        Me.PlatformLabel.Size = New System.Drawing.Size(212, 30)
-        Me.PlatformLabel.TabIndex = 8
-        Me.PlatformLabel.Text = "Platform"
-        Me.PlatformLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'T_price_00
-        '
-        Me.T_price_00.BackColor = System.Drawing.Color.Transparent
-        Me.T_price_00.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.T_price_00.Location = New System.Drawing.Point(122, 100)
-        Me.T_price_00.Name = "T_price_00"
-        Me.T_price_00.Size = New System.Drawing.Size(96, 21)
-        Me.T_price_00.TabIndex = 7
-        Me.T_price_00.Text = "$0.00"
-        '
-        'T_softTitle_01
-        '
-        Me.T_softTitle_01.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.T_softTitle_01.ForeColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(35, Byte), Integer))
-        Me.T_softTitle_01.Location = New System.Drawing.Point(63, 37)
-        Me.T_softTitle_01.Name = "T_softTitle_01"
-        Me.T_softTitle_01.Size = New System.Drawing.Size(274, 42)
-        Me.T_softTitle_01.TabIndex = 3
-        Me.T_softTitle_01.Text = "Title"
-        Me.T_softTitle_01.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'BottomScreen
         '
@@ -166,6 +114,50 @@ Partial Class Viewer
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'TopScreen
+        '
+        Me.TopScreen.BackColor = System.Drawing.Color.LightGoldenrodYellow
+        Me.TopScreen.BackgroundImage = Global.eShopMetadataViewer.My.Resources.Resources.TopScreenBG_ext
+        Me.TopScreen.Controls.Add(Me.StatusBar)
+        Me.TopScreen.Controls.Add(Me.P_line_00)
+        Me.TopScreen.Controls.Add(Me.PlatformLabel)
+        Me.TopScreen.Controls.Add(Me.T_price_00)
+        Me.TopScreen.Controls.Add(Me.P_rating_00)
+        Me.TopScreen.Controls.Add(Me.W_BG_00)
+        Me.TopScreen.Controls.Add(Me.P_Line_01)
+        Me.TopScreen.Controls.Add(Me.P_Line_02)
+        Me.TopScreen.Controls.Add(Me.T_softTitle_01)
+        Me.TopScreen.Controls.Add(Me.gameThumbnail)
+        Me.TopScreen.Controls.Add(Me.P_Shadow_00)
+        Me.TopScreen.Controls.Add(Me.P_titleBack_00)
+        Me.TopScreen.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TopScreen.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TopScreen.Location = New System.Drawing.Point(0, 24)
+        Me.TopScreen.Name = "TopScreen"
+        Me.TopScreen.Size = New System.Drawing.Size(400, 240)
+        Me.TopScreen.TabIndex = 0
+        '
+        'StatusBar
+        '
+        Me.StatusBar.BackColor = System.Drawing.Color.White
+        Me.StatusBar.Controls.Add(Me.InternetBar)
+        Me.StatusBar.Location = New System.Drawing.Point(0, 0)
+        Me.StatusBar.Margin = New System.Windows.Forms.Padding(0)
+        Me.StatusBar.Name = "StatusBar"
+        Me.StatusBar.Size = New System.Drawing.Size(400, 20)
+        Me.StatusBar.TabIndex = 3
+        '
+        'InternetBar
+        '
+        Me.InternetBar.BackColor = System.Drawing.Color.Transparent
+        Me.InternetBar.Image = Global.eShopMetadataViewer.My.Resources.Resources.P_NetModel_Full
+        Me.InternetBar.Location = New System.Drawing.Point(26, 2)
+        Me.InternetBar.Name = "InternetBar"
+        Me.InternetBar.Size = New System.Drawing.Size(108, 16)
+        Me.InternetBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.InternetBar.TabIndex = 0
+        Me.InternetBar.TabStop = False
+        '
         'P_line_00
         '
         Me.P_line_00.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -177,6 +169,29 @@ Partial Class Viewer
         Me.P_line_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.P_line_00.TabIndex = 10
         Me.P_line_00.TabStop = False
+        '
+        'PlatformLabel
+        '
+        Me.PlatformLabel.AutoEllipsis = True
+        Me.PlatformLabel.BackColor = System.Drawing.Color.Transparent
+        Me.PlatformLabel.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.PlatformLabel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.PlatformLabel.Location = New System.Drawing.Point(128, 160)
+        Me.PlatformLabel.Name = "PlatformLabel"
+        Me.PlatformLabel.Size = New System.Drawing.Size(212, 30)
+        Me.PlatformLabel.TabIndex = 8
+        Me.PlatformLabel.Text = "Platform"
+        Me.PlatformLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'T_price_00
+        '
+        Me.T_price_00.BackColor = System.Drawing.Color.Transparent
+        Me.T_price_00.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.T_price_00.Location = New System.Drawing.Point(122, 100)
+        Me.T_price_00.Name = "T_price_00"
+        Me.T_price_00.Size = New System.Drawing.Size(96, 21)
+        Me.T_price_00.TabIndex = 7
+        Me.T_price_00.Text = "$0.00"
         '
         'P_rating_00
         '
@@ -219,6 +234,17 @@ Partial Class Viewer
         Me.P_Line_02.Size = New System.Drawing.Size(212, 8)
         Me.P_Line_02.TabIndex = 4
         Me.P_Line_02.TabStop = False
+        '
+        'T_softTitle_01
+        '
+        Me.T_softTitle_01.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.T_softTitle_01.ForeColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(35, Byte), Integer))
+        Me.T_softTitle_01.Location = New System.Drawing.Point(63, 37)
+        Me.T_softTitle_01.Name = "T_softTitle_01"
+        Me.T_softTitle_01.Size = New System.Drawing.Size(274, 42)
+        Me.T_softTitle_01.TabIndex = 3
+        Me.T_softTitle_01.Text = "Title"
+        Me.T_softTitle_01.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'gameThumbnail
         '
@@ -272,11 +298,14 @@ Partial Class Viewer
         Me.MinimumSize = New System.Drawing.Size(416, 543)
         Me.Name = "Viewer"
         Me.Text = "eShop Metadata Viewer"
-        Me.TopScreen.ResumeLayout(False)
         Me.BottomScreen.ResumeLayout(False)
         Me.BottomScreen.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.TopScreen.ResumeLayout(False)
+        Me.StatusBar.ResumeLayout(False)
+        Me.StatusBar.PerformLayout()
+        CType(Me.InternetBar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_line_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).EndInit()
@@ -307,4 +336,6 @@ Partial Class Viewer
     Friend WithEvents P_titleBack_00 As PictureBox
     Friend WithEvents P_line_00 As PictureBox
     Friend WithEvents OpenXMLToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StatusBar As Panel
+    Friend WithEvents InternetBar As PictureBox
 End Class

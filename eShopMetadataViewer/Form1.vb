@@ -90,21 +90,28 @@ Public Class Viewer
 
 
     'Image Painting
-    Sub Form_Paint(s As Object, e As PaintEventArgs) Handles TopScreen.Paint
-        Dim pictureBoxes = {
+    Sub Form_Paint1(s As Object, e As PaintEventArgs) Handles TopScreen.Paint
+        paintTransparentImages({
             P_titleBack_00,
             P_line_00,
             P_Shadow_00
-        }
+        }, e)
+    End Sub
 
+    Sub Form_Paint2(s As Object, e As PaintEventArgs) Handles StatusBar.Paint
+        paintTransparentImages({
+            InternetBar
+        }, e)
+    End Sub
+
+    'Functions
+    Function paintTransparentImages(pictureBoxes As Array, e As PaintEventArgs)
         For Each item As Object In pictureBoxes
             Dim r As New Rectangle(item.Location.X, item.Location.Y, item.Width, item.Height)
             e.Graphics.DrawImage(item.Image, r)
             item.Visible = False
         Next
-
-
-    End Sub
+    End Function
 
     Function displayData(metadata As XDocument)
 

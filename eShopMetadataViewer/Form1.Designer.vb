@@ -33,28 +33,27 @@ Partial Class Viewer
         Me.T_softTitle_01 = New System.Windows.Forms.Label()
         Me.gameThumbnail = New System.Windows.Forms.PictureBox()
         Me.P_Shadow_00 = New System.Windows.Forms.PictureBox()
+        Me.P_titleBack_00 = New System.Windows.Forms.PictureBox()
         Me.BottomScreen = New System.Windows.Forms.Panel()
         Me.description = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TopScreen.SuspendLayout()
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Line_02, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BottomScreen.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TopScreen
         '
         Me.TopScreen.BackColor = System.Drawing.Color.LightGoldenrodYellow
-        Me.TopScreen.Controls.Add(Me.PictureBox1)
         Me.TopScreen.Controls.Add(Me.PlatformLabel)
         Me.TopScreen.Controls.Add(Me.T_price_00)
         Me.TopScreen.Controls.Add(Me.P_rating_00)
@@ -64,6 +63,7 @@ Partial Class Viewer
         Me.TopScreen.Controls.Add(Me.T_softTitle_01)
         Me.TopScreen.Controls.Add(Me.gameThumbnail)
         Me.TopScreen.Controls.Add(Me.P_Shadow_00)
+        Me.TopScreen.Controls.Add(Me.P_titleBack_00)
         Me.TopScreen.Dock = System.Windows.Forms.DockStyle.Top
         Me.TopScreen.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TopScreen.Location = New System.Drawing.Point(0, 24)
@@ -140,7 +140,7 @@ Partial Class Viewer
         '
         Me.T_softTitle_01.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.T_softTitle_01.ForeColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(35, Byte), Integer))
-        Me.T_softTitle_01.Location = New System.Drawing.Point(63, 16)
+        Me.T_softTitle_01.Location = New System.Drawing.Point(63, 37)
         Me.T_softTitle_01.Name = "T_softTitle_01"
         Me.T_softTitle_01.Size = New System.Drawing.Size(274, 42)
         Me.T_softTitle_01.TabIndex = 3
@@ -151,7 +151,7 @@ Partial Class Viewer
         '
         Me.gameThumbnail.BackColor = System.Drawing.Color.White
         Me.gameThumbnail.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.gameThumbnail.Location = New System.Drawing.Point(8, 91)
+        Me.gameThumbnail.Location = New System.Drawing.Point(4, 98)
         Me.gameThumbnail.Name = "gameThumbnail"
         Me.gameThumbnail.Size = New System.Drawing.Size(112, 112)
         Me.gameThumbnail.TabIndex = 1
@@ -160,13 +160,27 @@ Partial Class Viewer
         'P_Shadow_00
         '
         Me.P_Shadow_00.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.P_Shadow_00.Image = CType(resources.GetObject("P_Shadow_00.Image"), System.Drawing.Image)
-        Me.P_Shadow_00.Location = New System.Drawing.Point(3, 86)
+        Me.P_Shadow_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.shadow_01_96
+        Me.P_Shadow_00.Location = New System.Drawing.Point(-1, 93)
+        Me.P_Shadow_00.Margin = New System.Windows.Forms.Padding(0)
         Me.P_Shadow_00.Name = "P_Shadow_00"
         Me.P_Shadow_00.Size = New System.Drawing.Size(122, 122)
         Me.P_Shadow_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.P_Shadow_00.TabIndex = 0
         Me.P_Shadow_00.TabStop = False
+        '
+        'P_titleBack_00
+        '
+        Me.P_titleBack_00.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.P_titleBack_00.BackColor = System.Drawing.Color.Transparent
+        Me.P_titleBack_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.titleBack_00_color_resized
+        Me.P_titleBack_00.Location = New System.Drawing.Point(0, 20)
+        Me.P_titleBack_00.Margin = New System.Windows.Forms.Padding(0)
+        Me.P_titleBack_00.Name = "P_titleBack_00"
+        Me.P_titleBack_00.Size = New System.Drawing.Size(400, 78)
+        Me.P_titleBack_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.P_titleBack_00.TabIndex = 9
+        Me.P_titleBack_00.TabStop = False
         '
         'BottomScreen
         '
@@ -218,16 +232,6 @@ Partial Class Viewer
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.Location = New System.Drawing.Point(67, -36)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(400, 78)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 9
-        Me.PictureBox1.TabStop = False
-        '
         'Viewer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -250,11 +254,11 @@ Partial Class Viewer
         CType(Me.P_Line_02, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BottomScreen.ResumeLayout(False)
         Me.BottomScreen.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -275,5 +279,5 @@ Partial Class Viewer
     Friend WithEvents P_rating_00 As PictureBox
     Friend WithEvents T_price_00 As Label
     Friend WithEvents PlatformLabel As Label
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents P_titleBack_00 As PictureBox
 End Class

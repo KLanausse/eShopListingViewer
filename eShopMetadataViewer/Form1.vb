@@ -111,4 +111,20 @@ Public Class Viewer
         gameThumbnail.ImageLocation = thumbnails(currThumb - 1)
 
     End Sub
+
+
+    'Image Painting
+    Sub Form_Paint(s As Object, e As PaintEventArgs) Handles TopScreen.Paint
+        Dim pictureBoxes = {P_titleBack_00, P_Shadow_00}
+
+        For Each item As Object In pictureBoxes
+            Dim r As New Rectangle(item.Location.X, item.Location.Y, item.Width, item.Height)
+            e.Graphics.DrawImage(item.Image, r)
+            item.Visible = False
+        Next
+
+
+    End Sub
+
+
 End Class

@@ -150,31 +150,6 @@
   <metadata name="gameThumbnail.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="P_Shadow_00.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAHoAAAB6CAYAAABwWUfkAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAABGhJREFUeF7tmLFKXFEURY1iLBQUTa+9pWD+IeYHbDRYmV/QTpPeVkk6IZCvzFkP
-        j7wJErwngcy+dxcLZebOMLre3ue8Wdn8cDHnjemKZ7e/S14N1oL1GW+NBHNnOMTls+y5ZJ7cCDaDnWA3
-        2AveGQlwhTPcbQW4xOkke55knuDwfnAYHAXHwXsjAa5whjsc4hKnU7LnaSbJBwEvOAlOg/Pgk5EAVzjD
-        HQ6RjdMp1SmaXifyXA0c/BxcBTfBl+DrE/PflwE+jwovff6/Jd+Xn7i6Di4DHOJyO8DtgmiiTvS5KnjB
-        XfAQfOuQ7y88psj878AVznCHQ1zidEE0WxsPEvmzgKuDFz4GP4wEuLoPbgMc4hKnuF0QzebGUKfvqQKu
-        Et7gp5EAVyScKschLnH6R9EctmgtcIUzQvpq0U60Him6OdHUgEXrUEq0q1uPkmgOO9Fa4Kp5GfOM1iMT
-        bdGdk6KbZ7SrW4tSoi1aj1KiXd16WPQgpGhXd+dY9CCk6Oat29WtBa6avzBxovXIRDeJ9jKmR1m0E61F
-        STSHnWgtLHoQSqI9o/VI0b696pxSojnsZUwLix6EFO3q7pyyaCdaixTdVN3euvUoJ9qitcAVLWzRnWPR
-        g4Cr5ur2jNYjRXsZ6xwnehBw1TyjOez7aC0y0a7uzknRru7OKYn27ZUeKbqpujnsGa0FrkrLmBOtRTnR
-        Fq2FRQ8Crqhui+6cTLS37s5J0U505+DKW/cAlBKNaN9Ha5Gim2e0RWtRSrRntB5l0U60FrhqXsacaD3K
-        ibZoLVK0E905JdEctmgtcMWMbqpui9ajlGiuCm/dWpREc9iitcCVq3sASon21q1HJrq5ui1ai1KiOewZ
-        rUVJtKtbjxTdtIxZtB6lRHtG62HRg1AS7erWA1fNt1eI9tatRYpuXsYsWgtcuboHwKIHIUU3Vbe3bj1w
-        1TyjLVqPUqJd3XqUEm3RepQT7dsrLcqinWgtcEU4/c1Y55REe+vWA1c4s+jOyUQ3zWiL1iNFO9Gdgyuc
-        NSfay5gWFj0IuHJ1D0Amukm0vzDRI0U3VTeHXd1a4MrVPQCZaIvunLJoV7cWKdozunPKol3dWuCqeRlz
-        ovXIRHsZ65wU3VTdFq1HWbSrWwtcNc9oJ1qPTHSzaCdaixTt26vOKSXaovUoJdrVrUcp0Rx2orXAlbfu
-        ASgl2jNaj1KiLVqPsmgvY1rgytU9ACm66fbKovXA1auqey84Ds6Cm+AheAx4A7P84Oo+wB0OcYnTBdHr
-        Tw8eBafBdXAXIJtkA1dL/m6WD1zh7CrAIS5xitsF0TvBYXASXAbI5uqgxoFKyJ/q/I+/I/+P/5L5++IK
-        Z7jDIS5xuiB6LdgM9gMiz0GuivOAvjfLD65w9jHA4UGwFeD2WfRqsBEQdWRzNRB9XsBQN8sPrnCGOyTj
-        Eqe4nUTPU80TJJvI7wYcZnMzyw+uYDvAIS6nNAcrKXqebJ6k1xO2NrP8zJ3hcEpyMPmdi07Zph+evF6s
-        /AKh6/f7WhTm7AAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="MenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

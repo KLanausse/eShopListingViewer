@@ -123,7 +123,7 @@ Public Class Viewer
 
         'Set Title, discription
         T_softTitle_01.Text = metadata.<eshop>.<title>.<name>.Value
-        description.Text = Replace(metadata.<eshop>.<title>.<description>.Value, "<br>", vbNewLine) \
+        description.Text = Replace(metadata.<eshop>.<title>.<description>.Value, "<br>", vbNewLine)
 
         'ESBR Rating
         If metadata.<eshop>.<title>.<rating_info>.Value = "" Then

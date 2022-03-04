@@ -180,9 +180,9 @@ Partial Class Viewer
         '
         Me.T_price_00.BackColor = System.Drawing.Color.Transparent
         Me.T_price_00.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.T_price_00.Location = New System.Drawing.Point(122, 100)
+        Me.T_price_00.Location = New System.Drawing.Point(125, 104)
         Me.T_price_00.Name = "T_price_00"
-        Me.T_price_00.Size = New System.Drawing.Size(96, 21)
+        Me.T_price_00.Size = New System.Drawing.Size(133, 21)
         Me.T_price_00.TabIndex = 7
         Me.T_price_00.Text = "$0.00"
         '
@@ -245,7 +245,7 @@ Partial Class Viewer
         '
         Me.gameThumbnail.BackColor = System.Drawing.Color.White
         Me.gameThumbnail.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.gameThumbnail.Location = New System.Drawing.Point(4, 98)
+        Me.gameThumbnail.Location = New System.Drawing.Point(8, 98)
         Me.gameThumbnail.Name = "gameThumbnail"
         Me.gameThumbnail.Size = New System.Drawing.Size(112, 112)
         Me.gameThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -256,7 +256,7 @@ Partial Class Viewer
         '
         Me.P_Shadow_00.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.P_Shadow_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.shadow_01_96
-        Me.P_Shadow_00.Location = New System.Drawing.Point(-1, 93)
+        Me.P_Shadow_00.Location = New System.Drawing.Point(3, 93)
         Me.P_Shadow_00.Margin = New System.Windows.Forms.Padding(0)
         Me.P_Shadow_00.Name = "P_Shadow_00"
         Me.P_Shadow_00.Size = New System.Drawing.Size(122, 122)
@@ -311,25 +311,25 @@ Partial Class Viewer
         '
         Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FromDatabaseToolStripMenuItem, Me.FromXMLFIleToolStripMenuItem})
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
         Me.OpenToolStripMenuItem.Text = "Load"
         '
         'FromDatabaseToolStripMenuItem
         '
         Me.FromDatabaseToolStripMenuItem.Name = "FromDatabaseToolStripMenuItem"
-        Me.FromDatabaseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.FromDatabaseToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
         Me.FromDatabaseToolStripMenuItem.Text = "From Database"
         '
         'FromXMLFIleToolStripMenuItem
         '
         Me.FromXMLFIleToolStripMenuItem.Name = "FromXMLFIleToolStripMenuItem"
-        Me.FromXMLFIleToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.FromXMLFIleToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
         Me.FromXMLFIleToolStripMenuItem.Text = "From XML FIle"
         '
         'SaveMetadataToolStripMenuItem
         '
         Me.SaveMetadataToolStripMenuItem.Name = "SaveMetadataToolStripMenuItem"
-        Me.SaveMetadataToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SaveMetadataToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
         Me.SaveMetadataToolStripMenuItem.Text = "Save Metadata"
         '
         'Viewer

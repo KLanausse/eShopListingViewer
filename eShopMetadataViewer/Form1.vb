@@ -108,6 +108,8 @@ Public Class Viewer
             If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
                 My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, currData.ToString(), True)
             End If
+        Else
+            MsgBox("No content loaded!", vbExclamation Or vbOKOnly, "Can't Export")
         End If
     End Sub
 

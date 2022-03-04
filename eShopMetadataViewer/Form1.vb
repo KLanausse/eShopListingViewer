@@ -12,23 +12,29 @@ Public Class Viewer
     Public thumbnails(1) As String
     Public hasCerts As Boolean = True
     Public currData As XDocument
+    Public clientCerts As X509Certificate2Collection = New X509Certificate2Collection()
 
 
     Private Sub Form1_Open(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
 
         ' Ignore SSL Errors
         System.Net.ServicePointManager.ServerCertificateValidationCallback = Function(se As Object, cert As X509Certificate, chain As System.Security.Cryptography.X509Certificates.X509Chain, sslerror As System.Net.Security.SslPolicyErrors) True
-        'Dim cert = New X509Certificate2(File.ReadAllBytes(Directory.GetCurrentDirectory() + "\ctr_olive.p12"), "Alpine")
+
 
         'Restore SSL Certificate Validation Checking
         'System.Net.ServicePointManager.ServerCertificateValidationCallback = Nothing
 
-        'Check for ctr_olive.p12
-        Dim FileName = Directory.GetCurrentDirectory() + "\ctr_olive.p12"
-        Dim FileExists = Dir(FileName)
-        If FileExists = "" Then
-            MsgBox("Some tite information won't be able to be retrieved because the 3DS Client Certificits are missing", vbExclamation Or vbOKOnly, "Certs Missing")
-            hasCerts = False
+        'Check for ctr_olive.p12 and/or ctr-common-1.p12
+        Dim Files = {Directory.GetCurrentDirectory() + "\ctr_olive.p12", Directory.GetCurrentDirectory() + "\ctr-common-1.p12"}
+        For Each file In Files
+            Dim FileExists = Dir(file)
+            If FileExists IsNot "" Then
+                hasCerts = True
+                clientCerts.Import(file, "alpine", X509KeyStorageFlags.MachineKeySet And X509KeyStorageFlags.PersistKeySet)
+            End If
+        Next
+        If Not hasCerts Then
+            MsgBox("Some tite information won't be able to be retrieved because the 3DS Client Certificates are missing", vbExclamation Or vbOKOnly, "Certs Missing")
         End If
 
 
@@ -195,7 +201,7 @@ Public Class Viewer
         BottomScreen.Size = New Size(320 + SystemInformation.VerticalScrollBarWidth + 2, BottomScreen.Height)
 
         'Retail Price
-        T_price_00.Text = metadata.<eshop>.<title>.<price_on_retail>.Value
+        T_price_00.Text = metadata.<eshop>.<title>.<price_on_retail>.Value + " (Retail)"
 
         'Star Rating
         Dim sRating As Double = metadata.<eshop>.<title>.<star_rating_info>.<score>.Value
@@ -203,6 +209,29 @@ Public Class Viewer
 
         'Release Date
         T_Day_01.Text = Replace(metadata.<eshop>.<title>.<release_date_on_eshop>.Value, "-", "/")
+
+        'Price
+        If hasCerts Then
+            'https://stackoverflow.com/questions/39528973/force-httpwebrequest-to-send-client-certificate
+            Dim req As HttpWebRequest = WebRequest.Create("https://ninja.ctr.shop.nintendo.net/ninja/ws/US/titles/online_prices?title%5B%5D=" + metadata.<eshop>.Descendants("title").First().Attribute("id").Value + "&lang=EN&include_coupon=false&coupon_id=0&shop_id=1&_type=json")
+            req.ClientCertificates = clientCerts
+            req.Method = "GET"
+            Dim resp As WebResponse = req.GetResponse()
+            Dim stream As Stream = resp.GetResponseStream()
+            Using reader As StreamReader = New StreamReader(stream)
+
+                Dim line As String = reader.ReadLine()
+                Dim pricingData As XDocument
+                If line IsNot Nothing Then
+
+                    pricingData = XDocument.Parse(line)
+                    Console.WriteLine(pricingData)
+                    T_price_00.Text = pricingData.<eshop>.<online_prices>.<online_price>.<price>.<regular_price>.<amount>.Value
+
+                End If
+            End Using
+            stream.Close()
+        End If
 
         Return 0
     End Function

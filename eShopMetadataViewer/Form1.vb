@@ -1,32 +1,42 @@
 ﻿Imports System.IO
 Imports System.Net
+Imports System.Security.Cryptography.X509Certificates
 
 Public Class Viewer
-    Public Property version As String = "0.3"
+    Public Property version As String = "0.4.5"
     'MM/DD/YYYY
-    Public Property CreationDate As String = "3/3/2022 - 11:23 EST"
+    Public Property CreationDate As String = "3/4/2022 - 9:23 EST"
 
     'Public Vars
     Public currThumb = 1
     Public thumbnails(1) As String
+    Public hasCerts As Boolean = True
+    Public currData As XDocument
 
 
     Private Sub Form1_Open(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
 
         ' Ignore SSL Errors
-        System.Net.ServicePointManager.ServerCertificateValidationCallback =
-  Function(se As Object,
-  cert As System.Security.Cryptography.X509Certificates.X509Certificate,
-  chain As System.Security.Cryptography.X509Certificates.X509Chain,
-  sslerror As System.Net.Security.SslPolicyErrors) True
+        System.Net.ServicePointManager.ServerCertificateValidationCallback = Function(se As Object, cert As X509Certificate, chain As System.Security.Cryptography.X509Certificates.X509Chain, sslerror As System.Net.Security.SslPolicyErrors) True
+        'Dim cert = New X509Certificate2(File.ReadAllBytes(Directory.GetCurrentDirectory() + "\ctr_olive.p12"), "Alpine")
 
         'Restore SSL Certificate Validation Checking
         'System.Net.ServicePointManager.ServerCertificateValidationCallback = Nothing
 
+        'Check for ctr_olive.p12
+        Dim FileName = Directory.GetCurrentDirectory() + "\ctr_olive.p12"
+        Dim FileExists = Dir(FileName)
+        If FileExists = "" Then
+            MsgBox("Some tite information won't be able to be retrieved because the 3DS Client Certificits are missing", vbExclamation Or vbOKOnly, "Certs Missing")
+            hasCerts = False
+        End If
+
+
+
     End Sub
 
     'Toolbars
-    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
+    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FromDatabaseToolStripMenuItem.Click
         'Vars
         Dim metadata As XDocument
         Dim webErr As Boolean
@@ -68,7 +78,7 @@ Public Class Viewer
 
     End Sub
 
-    Private Sub OpenXMLToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenXMLToolStripMenuItem.Click
+    Private Sub OpenXMLToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FromXMLFIleToolStripMenuItem.Click
         Dim metadata As XDocument
         OpenFileDialog1.Filter = "XML|*.xml"
         OpenFileDialog1.ShowDialog()
@@ -77,12 +87,31 @@ Public Class Viewer
             metadata = XDocument.Load(OpenFileDialog1.FileName())
             DisplayData(metadata)
         Catch ex As Exception
-            MsgBox("Error reading XML", vbCritical Or vbOK, "Error")
+            MsgBox("Error reading XML", vbCritical Or vbOKOnly, "Error")
         End Try
 
     End Sub
+    '   'Save
+    Private Sub SaveMetadataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveMetadataToolStripMenuItem.Click
+        If currData IsNot Nothing Then
+            SaveFileDialog1.Filter = "XML (*.xml*)|*.xml"
 
+            'Make filename valid
+            Const csInvalidChars As String = ":\/?*<>|"""
+            Dim ValidFileName = Replace(currData.<eshop>.<title>.<name>.Value, "<br>", " ") + " - " + currData.<eshop>.<title>.<product_code>.Value
+            For lThisChar = 1 To Len(csInvalidChars)
+                ValidFileName = Replace(ValidFileName, Mid(csInvalidChars, lThisChar, 1), "")
+            Next
 
+            'Save and Write File
+            SaveFileDialog1.FileName = ValidFileName
+            If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+                My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, currData.ToString(), True)
+            End If
+        End If
+    End Sub
+
+    'UI Stuff
     Private Sub GameThumbnail_Click(sender As Object, e As EventArgs) Handles gameThumbnail.Click
         currThumb += 1
         If currThumb > thumbnails.Length Then
@@ -124,6 +153,7 @@ Public Class Viewer
     End Function
 
     Function DisplayData(metadata As XDocument)
+        currData = metadata
 
         'Find and get the Thumbnails
         Dim thumbList = metadata.Descendants("thumbnail")
@@ -174,5 +204,4 @@ Public Class Viewer
 
         Return 0
     End Function
-
 End Class

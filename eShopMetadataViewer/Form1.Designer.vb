@@ -45,7 +45,10 @@ Partial Class Viewer
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenXMLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FromDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FromXMLFIleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveMetadataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.BottomScreen.SuspendLayout()
         Me.TopScreen.SuspendLayout()
         Me.StatusBar.SuspendLayout()
@@ -299,22 +302,35 @@ Partial Class Viewer
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.OpenXMLToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.SaveMetadataToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'OpenToolStripMenuItem
         '
+        Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FromDatabaseToolStripMenuItem, Me.FromXMLFIleToolStripMenuItem})
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.OpenToolStripMenuItem.Text = "Load"
         '
-        'OpenXMLToolStripMenuItem
+        'FromDatabaseToolStripMenuItem
         '
-        Me.OpenXMLToolStripMenuItem.Name = "OpenXMLToolStripMenuItem"
-        Me.OpenXMLToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.OpenXMLToolStripMenuItem.Text = "Open XML"
+        Me.FromDatabaseToolStripMenuItem.Name = "FromDatabaseToolStripMenuItem"
+        Me.FromDatabaseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.FromDatabaseToolStripMenuItem.Text = "From Database"
+        '
+        'FromXMLFIleToolStripMenuItem
+        '
+        Me.FromXMLFIleToolStripMenuItem.Name = "FromXMLFIleToolStripMenuItem"
+        Me.FromXMLFIleToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.FromXMLFIleToolStripMenuItem.Text = "From XML FIle"
+        '
+        'SaveMetadataToolStripMenuItem
+        '
+        Me.SaveMetadataToolStripMenuItem.Name = "SaveMetadataToolStripMenuItem"
+        Me.SaveMetadataToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SaveMetadataToolStripMenuItem.Text = "Save Metadata"
         '
         'Viewer
         '
@@ -371,6 +387,9 @@ Partial Class Viewer
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OpenXMLToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents T_Day_01 As Label
+    Friend WithEvents FromDatabaseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FromXMLFIleToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveMetadataToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class

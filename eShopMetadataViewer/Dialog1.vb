@@ -35,7 +35,7 @@ Public Class Dialog1
             For Each node As XElement In nodeList
                 Dim cIndex = node.Attribute("index").Value
                 Dim contentId = node.Element("title").Attribute("id").Value
-                Dim contentName = node.Element("title").<name>.Value
+                Dim contentName = Replace(node.Element("title").<name>.Value, "<br>", " ")
                 'Add them to the ListBox
                 ListBox1.Items.Add(contentName + " - " + contentId)
 

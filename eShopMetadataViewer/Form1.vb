@@ -3,14 +3,14 @@ Imports System.Net
 Imports System.Security.Cryptography.X509Certificates
 
 Public Class Viewer
-    Public Property version As String = "0.4.5"
+    Public Property version As String = "0.5"
     'MM/DD/YYYY
-    Public Property CreationDate As String = "3/4/2022 - 9:23 EST"
+    Public Property CreationDate As String = "3/7/2022 - 9:23 EST"
 
     'Public Vars
     Public currThumb = 1
     Public thumbnails(1) As String
-    Public hasCerts As Boolean = True
+    Public hasCerts As Boolean = False
     Public currData As XDocument
     Public clientCerts As X509Certificate2Collection = New X509Certificate2Collection()
 
@@ -34,7 +34,7 @@ Public Class Viewer
             End If
         Next
         If Not hasCerts Then
-            MsgBox("Some tite information won't be able to be retrieved because the 3DS Client Certificates are missing", vbExclamation Or vbOKOnly, "Certs Missing")
+            MsgBox("Some title information won't be able to be retrieved because the 3DS Client Certificates are missing", vbExclamation Or vbOKOnly, "Certs Missing")
         End If
 
 
@@ -103,7 +103,7 @@ Public Class Viewer
             SaveFileDialog1.Filter = "XML (*.xml*)|*.xml"
 
             'Make filename valid
-            Const csInvalidChars As String = ":\/?*<>|"""
+            Const csInvalidChars As String = ":\/?*<>|""" + vbNewLine 'You suck NewLine >:( Made me waste 
             Dim ValidFileName = Replace(currData.<eshop>.<title>.<name>.Value, "<br>", " ") + " - " + currData.<eshop>.<title>.<product_code>.Value
             For lThisChar = 1 To Len(csInvalidChars)
                 ValidFileName = Replace(ValidFileName, Mid(csInvalidChars, lThisChar, 1), "")
@@ -131,15 +131,19 @@ Public Class Viewer
 
 
     'Image Painting
-    Sub Form_Paint1(s As Object, e As PaintEventArgs) Handles TopScreen.Paint
+    Sub Top_Screen_Paint(s As Object, e As PaintEventArgs) Handles TopScreen.Paint
         PaintTransparentImages({
             P_titleBack_00,
-            P_line_00,
             P_Shadow_00,
             P_Line_01,
             P_Line_02
         }, e)
     End Sub
+
+    Private Sub P_titleBack_00_Paint(sender As Object, e As PaintEventArgs) Handles P_titleBack_00.Paint
+        PaintTransparentImages({P_StatusBar_Shadow, P_titeBack_Shadow, P_Shadow_01}, e)
+    End Sub
+
 
     Sub Form_Paint2(s As Object, e As PaintEventArgs) Handles StatusBar.Paint
         PaintTransparentImages({
@@ -201,11 +205,27 @@ Public Class Viewer
         BottomScreen.Size = New Size(320 + SystemInformation.VerticalScrollBarWidth + 2, BottomScreen.Height)
 
         'Retail Price
-        T_price_00.Text = metadata.<eshop>.<title>.<price_on_retail>.Value + " (Retail)"
+
+        If metadata.<eshop>.<title>.<price_on_retail>.Value IsNot Nothing Then
+            T_price_00.Text = metadata.<eshop>.<title>.<price_on_retail>.Value + " (Retail)"
+        Else
+            T_price_00.Text = ""
+        End If
+
 
         'Star Rating
-        Dim sRating As Double = metadata.<eshop>.<title>.<star_rating_info>.<score>.Value
-        Console.WriteLine(Math.Round(sRating))
+        Dim Stars = {eShopMetadataViewer.My.Resources.Resources.star_00, eShopMetadataViewer.My.Resources.Resources.star_01, eShopMetadataViewer.My.Resources.Resources.star_02, eShopMetadataViewer.My.Resources.Resources.star_03, eShopMetadataViewer.My.Resources.Resources.star_04, eShopMetadataViewer.My.Resources.Resources.star_05}
+        Dim sRating As Integer = metadata.<eshop>.<title>.<star_rating_info>.<score>.Value
+
+        If sRating = Nothing Then
+            star_rating.Visible = False
+            T_star_00.Visible = False
+        Else
+            star_rating.Visible = True
+            T_star_00.Visible = True
+            star_rating.Image = Stars(Math.Round(sRating))
+            T_star_00.Text = "(" + metadata.<eshop>.<title>.<star_rating_info>.<votes>.Value + ")"
+        End If
 
         'Release Date
         T_Day_01.Text = Replace(metadata.<eshop>.<title>.<release_date_on_eshop>.Value, "-", "/")
@@ -213,6 +233,7 @@ Public Class Viewer
         'Price
         If hasCerts Then
             'https://stackoverflow.com/questions/39528973/force-httpwebrequest-to-send-client-certificate
+
             Dim req As HttpWebRequest = WebRequest.Create("https://ninja.ctr.shop.nintendo.net/ninja/ws/US/titles/online_prices?title%5B%5D=" + metadata.<eshop>.Descendants("title").First().Attribute("id").Value + "&lang=EN&include_coupon=false&coupon_id=0&shop_id=1&_type=json")
             req.ClientCertificates = clientCerts
             req.Method = "GET"
@@ -225,7 +246,6 @@ Public Class Viewer
                 If line IsNot Nothing Then
 
                     pricingData = XDocument.Parse(line)
-                    Console.WriteLine(pricingData)
                     T_price_00.Text = pricingData.<eshop>.<online_prices>.<online_price>.<price>.<regular_price>.<amount>.Value
 
                 End If
@@ -235,4 +255,5 @@ Public Class Viewer
 
         Return 0
     End Function
+
 End Class

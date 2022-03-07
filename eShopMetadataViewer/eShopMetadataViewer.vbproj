@@ -171,6 +171,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="eShop.ico" />
+    <None Include="Resources\titleBack_Shadow.png" />
+    <None Include="Resources\shadow_00.color.png" />
+    <None Include="Resources\titleBack_00.color.png" />
+    <None Include="Resources\line_01.colored.png" />
+    <None Include="Resources\gradation_00.colored.png" />
+    <None Include="Resources\star_00.png" />
+    <None Include="Resources\star_05.bclim.00.png" />
+    <None Include="Resources\star_04.bclim.00.png" />
+    <None Include="Resources\star_03.bclim.00.png" />
+    <None Include="Resources\star_02.bclim.00.png" />
+    <None Include="Resources\star_01.bclim.00.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

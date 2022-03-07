@@ -42,6 +42,7 @@ Public Class Viewer
     End Sub
 
     'Toolbars
+    '   Load
     Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FromDatabaseToolStripMenuItem.Click
         'Vars
         Dim metadata As XDocument
@@ -97,7 +98,7 @@ Public Class Viewer
         End Try
 
     End Sub
-    '   'Save
+    '   Save
     Private Sub SaveMetadataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveMetadataToolStripMenuItem.Click
         If currData IsNot Nothing Then
             SaveFileDialog1.Filter = "XML (*.xml*)|*.xml"
@@ -205,16 +206,15 @@ Public Class Viewer
         BottomScreen.Size = New Size(320 + SystemInformation.VerticalScrollBarWidth + 2, BottomScreen.Height)
 
         'Retail Price
+        T_price_00.Text = metadata.<eshop>.<title>.<price_on_retail>.Value
+        If metadata.<eshop>.<title>.<price_on_retail>.Value IsNot Nothing And metadata.<eshop>.Descendants("title")(0).Attribute("custom").Value = Nothing Then
+            T_price_00.Text = T_price_00.Text + " (Retail)"
 
-        If metadata.<eshop>.<title>.<price_on_retail>.Value IsNot Nothing Then
-            T_price_00.Text = metadata.<eshop>.<title>.<price_on_retail>.Value + " (Retail)"
-        Else
-            T_price_00.Text = ""
         End If
 
 
-        'Star Rating
-        Dim Stars = {eShopMetadataViewer.My.Resources.Resources.star_00, eShopMetadataViewer.My.Resources.Resources.star_01, eShopMetadataViewer.My.Resources.Resources.star_02, eShopMetadataViewer.My.Resources.Resources.star_03, eShopMetadataViewer.My.Resources.Resources.star_04, eShopMetadataViewer.My.Resources.Resources.star_05}
+            'Star Rating
+            Dim Stars = {eShopMetadataViewer.My.Resources.Resources.star_00, eShopMetadataViewer.My.Resources.Resources.star_01, eShopMetadataViewer.My.Resources.Resources.star_02, eShopMetadataViewer.My.Resources.Resources.star_03, eShopMetadataViewer.My.Resources.Resources.star_04, eShopMetadataViewer.My.Resources.Resources.star_05}
         Dim sRating As Integer = metadata.<eshop>.<title>.<star_rating_info>.<score>.Value
 
         If sRating = Nothing Then
@@ -231,26 +231,28 @@ Public Class Viewer
         T_Day_01.Text = Replace(metadata.<eshop>.<title>.<release_date_on_eshop>.Value, "-", "/")
 
         'Price
-        If hasCerts Then
-            'https://stackoverflow.com/questions/39528973/force-httpwebrequest-to-send-client-certificate
+        If metadata.<eshop>.Descendants("title")(0).Attribute("custom").Value = Nothing Then
+            If hasCerts Then
+                'https://stackoverflow.com/questions/39528973/force-httpwebrequest-to-send-client-certificate
 
-            Dim req As HttpWebRequest = WebRequest.Create("https://ninja.ctr.shop.nintendo.net/ninja/ws/US/titles/online_prices?title%5B%5D=" + metadata.<eshop>.Descendants("title").First().Attribute("id").Value + "&lang=EN&include_coupon=false&coupon_id=0&shop_id=1&_type=json")
-            req.ClientCertificates = clientCerts
-            req.Method = "GET"
-            Dim resp As WebResponse = req.GetResponse()
-            Dim stream As Stream = resp.GetResponseStream()
-            Using reader As StreamReader = New StreamReader(stream)
+                Dim req As HttpWebRequest = WebRequest.Create("https://ninja.ctr.shop.nintendo.net/ninja/ws/US/titles/online_prices?title%5B%5D=" + metadata.<eshop>.Descendants("title").First().Attribute("id").Value + "&lang=EN&include_coupon=false&coupon_id=0&shop_id=1&_type=json")
+                req.ClientCertificates = clientCerts
+                req.Method = "GET"
+                Dim resp As WebResponse = req.GetResponse()
+                Dim stream As Stream = resp.GetResponseStream()
+                Using reader As StreamReader = New StreamReader(stream)
 
-                Dim line As String = reader.ReadLine()
-                Dim pricingData As XDocument
-                If line IsNot Nothing Then
+                    Dim line As String = reader.ReadLine()
+                    Dim pricingData As XDocument
+                    If line IsNot Nothing Then
 
-                    pricingData = XDocument.Parse(line)
-                    T_price_00.Text = pricingData.<eshop>.<online_prices>.<online_price>.<price>.<regular_price>.<amount>.Value
+                        pricingData = XDocument.Parse(line)
+                        T_price_00.Text = pricingData.<eshop>.<online_prices>.<online_price>.<price>.<regular_price>.<amount>.Value
 
-                End If
-            End Using
-            stream.Close()
+                    End If
+                End Using
+                stream.Close()
+            End If
         End If
 
         Return 0

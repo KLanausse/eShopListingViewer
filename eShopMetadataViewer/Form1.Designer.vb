@@ -277,7 +277,7 @@ Partial Class Viewer
         'T_price_00
         '
         Me.T_price_00.BackColor = System.Drawing.Color.Transparent
-        Me.T_price_00.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.T_price_00.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.T_price_00.Location = New System.Drawing.Point(125, 104)
         Me.T_price_00.Name = "T_price_00"
         Me.T_price_00.Size = New System.Drawing.Size(155, 21)

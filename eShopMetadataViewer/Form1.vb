@@ -3,9 +3,9 @@ Imports System.Net
 Imports System.Security.Cryptography.X509Certificates
 
 Public Class Viewer
-    Public Property version As String = "0.5"
+    Public Property version As String = "0.5.1"
     'MM/DD/YYYY
-    Public Property CreationDate As String = "3/7/2022 - 9:23 EST"
+    Public Property CreationDate As String = "3/7/2022 - 3:52 EST"
 
     'Public Vars
     Public currThumb = 1
@@ -207,14 +207,14 @@ Public Class Viewer
 
         'Retail Price
         T_price_00.Text = metadata.<eshop>.<title>.<price_on_retail>.Value
-        If metadata.<eshop>.<title>.<price_on_retail>.Value IsNot Nothing And metadata.<eshop>.Descendants("title")(0).Attribute("custom").Value = Nothing Then
+
+        If metadata.<eshop>.<title>.<price_on_retail>.Value IsNot Nothing Then
             T_price_00.Text = T_price_00.Text + " (Retail)"
 
         End If
 
-
-            'Star Rating
-            Dim Stars = {eShopMetadataViewer.My.Resources.Resources.star_00, eShopMetadataViewer.My.Resources.Resources.star_01, eShopMetadataViewer.My.Resources.Resources.star_02, eShopMetadataViewer.My.Resources.Resources.star_03, eShopMetadataViewer.My.Resources.Resources.star_04, eShopMetadataViewer.My.Resources.Resources.star_05}
+        'Star Rating
+        Dim Stars = {eShopMetadataViewer.My.Resources.Resources.star_00, eShopMetadataViewer.My.Resources.Resources.star_01, eShopMetadataViewer.My.Resources.Resources.star_02, eShopMetadataViewer.My.Resources.Resources.star_03, eShopMetadataViewer.My.Resources.Resources.star_04, eShopMetadataViewer.My.Resources.Resources.star_05}
         Dim sRating As Integer = metadata.<eshop>.<title>.<star_rating_info>.<score>.Value
 
         If sRating = Nothing Then
@@ -231,28 +231,27 @@ Public Class Viewer
         T_Day_01.Text = Replace(metadata.<eshop>.<title>.<release_date_on_eshop>.Value, "-", "/")
 
         'Price
-        If metadata.<eshop>.Descendants("title")(0).Attribute("custom").Value = Nothing Then
-            If hasCerts Then
-                'https://stackoverflow.com/questions/39528973/force-httpwebrequest-to-send-client-certificate
 
-                Dim req As HttpWebRequest = WebRequest.Create("https://ninja.ctr.shop.nintendo.net/ninja/ws/US/titles/online_prices?title%5B%5D=" + metadata.<eshop>.Descendants("title").First().Attribute("id").Value + "&lang=EN&include_coupon=false&coupon_id=0&shop_id=1&_type=json")
-                req.ClientCertificates = clientCerts
-                req.Method = "GET"
-                Dim resp As WebResponse = req.GetResponse()
-                Dim stream As Stream = resp.GetResponseStream()
-                Using reader As StreamReader = New StreamReader(stream)
+        If hasCerts Then
+            'https://stackoverflow.com/questions/39528973/force-httpwebrequest-to-send-client-certificate
 
-                    Dim line As String = reader.ReadLine()
-                    Dim pricingData As XDocument
-                    If line IsNot Nothing Then
+            Dim req As HttpWebRequest = WebRequest.Create("https://ninja.ctr.shop.nintendo.net/ninja/ws/US/titles/online_prices?title%5B%5D=" + metadata.<eshop>.Descendants("title").First().Attribute("id").Value + "&lang=EN&include_coupon=false&coupon_id=0&shop_id=1&_type=json")
+            req.ClientCertificates = clientCerts
+            req.Method = "GET"
+            Dim resp As WebResponse = req.GetResponse()
+            Dim stream As Stream = resp.GetResponseStream()
+            Using reader As StreamReader = New StreamReader(stream)
 
-                        pricingData = XDocument.Parse(line)
-                        T_price_00.Text = pricingData.<eshop>.<online_prices>.<online_price>.<price>.<regular_price>.<amount>.Value
+                Dim line As String = reader.ReadLine()
+                Dim pricingData As XDocument
+                If line IsNot Nothing Then
 
-                    End If
-                End Using
-                stream.Close()
-            End If
+                    pricingData = XDocument.Parse(line)
+                    T_price_00.Text = pricingData.<eshop>.<online_prices>.<online_price>.<price>.<regular_price>.<amount>.Value
+
+                End If
+            End Using
+            stream.Close()
         End If
 
         Return 0

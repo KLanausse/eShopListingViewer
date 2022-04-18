@@ -3,9 +3,9 @@ Imports System.Net
 Imports System.Security.Cryptography.X509Certificates
 
 Public Class Viewer
-    Public Property version As String = "0.5.1"
+    Public Property version As String = "0.5.2"
     'MM/DD/YYYY
-    Public Property CreationDate As String = "3/7/2022 - 3:52 EST"
+    Public Property CreationDate As String = "3/9/2022 - 1:40 PM EST"
 
     'Public Vars
     Public currThumb = 1
@@ -30,7 +30,13 @@ Public Class Viewer
             Dim FileExists = Dir(file)
             If FileExists IsNot "" Then
                 hasCerts = True
-                clientCerts.Import(file, "alpine", X509KeyStorageFlags.MachineKeySet And X509KeyStorageFlags.PersistKeySet)
+                'Miiverse ctr_olive.p12 pass g8Ba#Mqj$z39
+                Try
+                    clientCerts.Import(file, "alpine", X509KeyStorageFlags.MachineKeySet And X509KeyStorageFlags.PersistKeySet)
+                Catch ex As Exception
+                    clientCerts.Import(file, "g8Ba#Mqj$z39", X509KeyStorageFlags.MachineKeySet And X509KeyStorageFlags.PersistKeySet)
+                End Try
+
             End If
         Next
         If Not hasCerts Then

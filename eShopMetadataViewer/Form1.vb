@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports System.Security.Cryptography.X509Certificates
+Imports System.Text
 
 Public Class Viewer
     Public Property version As String = "0.5.2"
@@ -62,19 +63,19 @@ Public Class Viewer
         If Dialog1.DialogResult() = System.Windows.Forms.DialogResult.OK Then
 
             'Load content metadata
-            Try
-                metadata = XDocument.Load("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/title/" + Dialog1.ID + "/?shop_id=1")
-                webErr = False
-            Catch ex As WebException
-                Using reader As New StreamReader(ex.Response.GetResponseStream())
-                    metadata = XDocument.Parse(reader.ReadToEnd())
-                    MsgBox(metadata.<eshop>.<error>.<message>.Value, vbCritical Or vbOK, "Error " + metadata.<eshop>.<error>.<code>.Value)
-                End Using
-                webErr = True
-            End Try
+            'Try
+            'Check if the title metadata is downloaded; if not, download it
 
-            'Setup page with the Metadata info
-            If Not webErr Then
+            'Orignal
+            metadata = XDocument.Load(DownloadedFileExists("samurai.ctr.shop.nintendo.net/samurai/ws/US/title/" + Dialog1.ID + "/?shop_id=1"))
+            webErr = False
+                'Catch ex As Exception
+                '   MsgBox(ex.ToString())
+                '  webErr = True
+                'End Try
+
+                'Setup page with the Metadata info
+                If Not webErr Then
 
                 DisplayData(metadata)
 
@@ -110,7 +111,7 @@ Public Class Viewer
             SaveFileDialog1.Filter = "XML (*.xml*)|*.xml"
 
             'Make filename valid
-            Const csInvalidChars As String = ":\/?*<>|""" + vbNewLine 'You suck NewLine >:( Made me waste 
+            Const csInvalidChars As String = ":\/?*<>|""" + vbNewLine 'You suck NewLine >:( Made me waste half an hour
             Dim ValidFileName = Replace(currData.<eshop>.<title>.<name>.Value, "<br>", " ") + " - " + currData.<eshop>.<title>.<product_code>.Value
             For lThisChar = 1 To Len(csInvalidChars)
                 ValidFileName = Replace(ValidFileName, Mid(csInvalidChars, lThisChar, 1), "")
@@ -180,7 +181,7 @@ Public Class Viewer
         For Each node As XElement In thumbList
             thumbnailCount += 1
             Array.Resize(thumbnails, thumbnailCount)
-            thumbnails(thumbnailCount - 1) = node.Attribute("url").Value
+            thumbnails(thumbnailCount - 1) = DownloadedFileExists(node.Attribute("url").Value.Replace("https://", ""))
         Next
         '   Set Game Image
         Dim image = thumbnails(0)
@@ -199,7 +200,7 @@ Public Class Viewer
             P_Line_01.Width = 264
             P_Line_02.Width = 264
         Else
-            P_rating_00.ImageLocation = metadata.<eshop>.<title>.<rating_info>.<rating>.<icons>.Descendants("icon")(0).Attribute("url").Value
+            P_rating_00.ImageLocation = DownloadedFileExists(metadata.<eshop>.<title>.<rating_info>.<rating>.<icons>.Descendants("icon")(0).Attribute("url").Value.Substring(8))
             P_Line_01.Width = 212
             P_Line_02.Width = 212
             P_rating_00.Visible = True
@@ -221,7 +222,8 @@ Public Class Viewer
 
         'Star Rating
         Dim Stars = {eShopMetadataViewer.My.Resources.Resources.star_00, eShopMetadataViewer.My.Resources.Resources.star_01, eShopMetadataViewer.My.Resources.Resources.star_02, eShopMetadataViewer.My.Resources.Resources.star_03, eShopMetadataViewer.My.Resources.Resources.star_04, eShopMetadataViewer.My.Resources.Resources.star_05}
-        Dim sRating As Integer = metadata.<eshop>.<title>.<star_rating_info>.<score>.Value
+        Dim sRating As Integer = Nothing
+        sRating = metadata.<eshop>.<title>.<star_rating_info>.<score>.Value
 
         If sRating = Nothing Then
             star_rating.Visible = False
@@ -240,27 +242,70 @@ Public Class Viewer
 
         If hasCerts Then
             'https://stackoverflow.com/questions/39528973/force-httpwebrequest-to-send-client-certificate
+            Dim pricingData As XDocument
+            Dim titleID As String
+            Dim URL As String
+            titleID = metadata.<eshop>.Descendants("title").First().Attribute("id").Value
+            URL = "ninja.ctr.shop.nintendo.net/ninja/ws/US/titles/online_prices?title[]=" + titleID + "&lang=EN&include_coupon=false&coupon_id=0&shop_id=1&_type=json"
 
-            Dim req As HttpWebRequest = WebRequest.Create("https://ninja.ctr.shop.nintendo.net/ninja/ws/US/titles/online_prices?title%5B%5D=" + metadata.<eshop>.Descendants("title").First().Attribute("id").Value + "&lang=EN&include_coupon=false&coupon_id=0&shop_id=1&_type=json")
-            req.ClientCertificates = clientCerts
-            req.Method = "GET"
-            Dim resp As WebResponse = req.GetResponse()
-            Dim stream As Stream = resp.GetResponseStream()
-            Using reader As StreamReader = New StreamReader(stream)
+            'JANKY CODE. FIX WHEN POSABLE
+            Try
+                pricingData = XDocument.Load(DownloadedFileExists(URL))
+                T_price_00.Text = pricingData.<eshop>.<online_prices>.<online_price>.<price>.<regular_price>.<amount>.Value
+            Catch
 
-                Dim line As String = reader.ReadLine()
-                Dim pricingData As XDocument
-                If line IsNot Nothing Then
+            End Try
 
-                    pricingData = XDocument.Parse(line)
-                    T_price_00.Text = pricingData.<eshop>.<online_prices>.<online_price>.<price>.<regular_price>.<amount>.Value
-
-                End If
-            End Using
-            stream.Close()
         End If
 
         Return 0
+    End Function
+
+    Function DownloadedFileExists(url As String)
+        Try
+            'Filter out unwanted URL thingys
+            Dim FilePath As String = $"{Directory.GetCurrentDirectory()}/{url.Replace("?", "%3F")}"
+            Dim FileExists As String
+            FileExists = Dir(FilePath)
+
+            If FileExists = "" Then
+
+                My.Computer.FileSystem.CreateDirectory(System.IO.Path.GetDirectoryName(FilePath))
+
+                Dim req As HttpWebRequest = WebRequest.Create("https://" + url)
+                req.ClientCertificates = clientCerts
+                req.Method = "GET"
+                Dim resp As WebResponse = req.GetResponse()
+                Dim stream As Stream = resp.GetResponseStream()
+
+                'Apply file extention based of the contentType
+                Dim contentType As String = resp.ContentType()
+                Console.WriteLine(contentType)
+                If contentType = "application/xml" Then
+                    FilePath = FilePath + ".xml"
+                End If
+
+                'Write to file
+                Dim fs As FileStream = File.Create(FilePath)
+                stream.CopyTo(fs)
+                fs.Close()
+                stream.Close()
+
+            End If
+
+            Return FilePath
+        Catch ex As WebException
+            Console.WriteLine(ex)
+            Using reader As New StreamReader(ex.Response.GetResponseStream())
+                Try
+                    Dim metadata = XDocument.Parse(reader.ReadToEnd())
+                    MsgBox(metadata.<eshop>.<error>.<message>.Value, vbCritical Or vbOK, "Error " + metadata.<eshop>.<error>.<code>.Value)
+                Catch
+                    MsgBox("405", vbCritical Or vbOK, reader.ReadToEnd())
+                End Try
+                Return vbNull
+            End Using
+        End Try
     End Function
 
 End Class

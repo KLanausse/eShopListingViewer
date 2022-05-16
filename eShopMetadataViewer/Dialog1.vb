@@ -16,7 +16,7 @@ Public Class Dialog1
             'Check if the titles database is downloaded; if not, download it
             Dim FileName As String
             Dim FileExists As String
-            FileName = Directory.GetCurrentDirectory() + "\titles&shop_id=1.xml"
+            FileName = Directory.GetCurrentDirectory() + "\samurai.ctr.shop.nintendo.net\samurai\ws\US\titles\titles%3Flimit=10000&shop_id=1.xml"
             FileExists = Dir(FileName)
 
             If FileExists = "" Then
@@ -24,7 +24,8 @@ Public Class Dialog1
                 'https://samurai.ctr.shop.nintendo.net/samurai/ws/US/contents?lang=EN&shop_id=1&_type=json&limit=1500'
                 'https://samurai.ctr.shop.nintendo.net/samurai/ws/US/contents?lang=EN&shop_id=1&_type=json&limit=1265&offset=1500
                 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-                My.Computer.Network.DownloadFile("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/titles?limit=10000&shop_id=1", Directory.GetCurrentDirectory() + "\titles&shop_id=1.xml")
+                My.Computer.FileSystem.CreateDirectory(Directory.GetCurrentDirectory() + "\samurai.ctr.shop.nintendo.net\samurai\ws\US\titles")
+                My.Computer.Network.DownloadFile("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/titles?limit=10000&shop_id=1", Directory.GetCurrentDirectory() + "\samurai.ctr.shop.nintendo.net\samurai\ws\US\titles\titles%3Flimit=10000&shop_id=1.xml")
                 'My.Computer.Network.DownloadFile("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/contents?lang=EN&shop_id=1&_type=json&limit=1500", Directory.GetCurrentDirectory() + "\contents1500.xml")
             End If
             'Load the list
@@ -49,7 +50,7 @@ Public Class Dialog1
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         If TextBox1.Text = Nothing Then
             Dim content As String = ListBox1.SelectedItem.ToString
-            Dim dashIndex = ListBox1.SelectedItem.ToString.IndexOf("-") + 2
+            Dim dashIndex = ListBox1.SelectedItem.ToString.LastIndexOf("-") + 2
             Dim colonIndex = ListBox1.SelectedItem.ToString.IndexOf(":") + 2
 
             Me.ID = content.Substring(dashIndex, 14)

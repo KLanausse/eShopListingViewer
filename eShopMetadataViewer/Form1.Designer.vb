@@ -34,12 +34,15 @@ Partial Class Viewer
         Me.SaveMetadataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.TopScreen = New System.Windows.Forms.Panel()
+        Me.gameThumbnail = New System.Windows.Forms.PictureBox()
+        Me.P_Shadow_00 = New System.Windows.Forms.PictureBox()
+        Me.T_Day_01 = New System.Windows.Forms.Label()
+        Me.T_Day_00 = New System.Windows.Forms.Label()
         Me.P_titeBack_Shadow = New System.Windows.Forms.PictureBox()
         Me.P_StatusBar_Shadow = New System.Windows.Forms.PictureBox()
         Me.P_Shadow_01 = New System.Windows.Forms.PictureBox()
         Me.P_BG_00 = New System.Windows.Forms.PictureBox()
         Me.star_rating = New System.Windows.Forms.PictureBox()
-        Me.T_Day_01 = New System.Windows.Forms.Label()
         Me.StatusBar = New System.Windows.Forms.Panel()
         Me.InternetBar = New System.Windows.Forms.PictureBox()
         Me.PlatformLabel = New System.Windows.Forms.Label()
@@ -48,15 +51,14 @@ Partial Class Viewer
         Me.W_BG_00 = New System.Windows.Forms.Panel()
         Me.P_Line_01 = New System.Windows.Forms.PictureBox()
         Me.P_Line_02 = New System.Windows.Forms.PictureBox()
-        Me.gameThumbnail = New System.Windows.Forms.PictureBox()
-        Me.P_Shadow_00 = New System.Windows.Forms.PictureBox()
-        Me.T_Day_00 = New System.Windows.Forms.Label()
         Me.T_star_00 = New System.Windows.Forms.Label()
         Me.T_softTitle_01 = New System.Windows.Forms.Label()
         Me.P_titleBack_00 = New System.Windows.Forms.PictureBox()
         Me.BottomScreen.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.TopScreen.SuspendLayout()
+        CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_titeBack_Shadow, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_StatusBar_Shadow, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Shadow_01, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,8 +69,6 @@ Partial Class Viewer
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_Line_02, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -172,6 +172,57 @@ Partial Class Viewer
         Me.TopScreen.Size = New System.Drawing.Size(400, 240)
         Me.TopScreen.TabIndex = 0
         '
+        'gameThumbnail
+        '
+        Me.gameThumbnail.BackColor = System.Drawing.Color.White
+        Me.gameThumbnail.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.gameThumbnail.Location = New System.Drawing.Point(8, 98)
+        Me.gameThumbnail.Name = "gameThumbnail"
+        Me.gameThumbnail.Size = New System.Drawing.Size(112, 112)
+        Me.gameThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.gameThumbnail.TabIndex = 1
+        Me.gameThumbnail.TabStop = False
+        '
+        'P_Shadow_00
+        '
+        Me.P_Shadow_00.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.P_Shadow_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.shadow_01_96
+        Me.P_Shadow_00.Location = New System.Drawing.Point(3, 93)
+        Me.P_Shadow_00.Margin = New System.Windows.Forms.Padding(0)
+        Me.P_Shadow_00.Name = "P_Shadow_00"
+        Me.P_Shadow_00.Size = New System.Drawing.Size(122, 122)
+        Me.P_Shadow_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.P_Shadow_00.TabIndex = 0
+        Me.P_Shadow_00.TabStop = False
+        '
+        'T_Day_01
+        '
+        Me.T_Day_01.BackColor = System.Drawing.Color.Transparent
+        Me.T_Day_01.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.T_Day_01.ForeColor = System.Drawing.Color.FromArgb(CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.T_Day_01.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.T_Day_01.Location = New System.Drawing.Point(234, 197)
+        Me.T_Day_01.Margin = New System.Windows.Forms.Padding(0)
+        Me.T_Day_01.Name = "T_Day_01"
+        Me.T_Day_01.Size = New System.Drawing.Size(106, 15)
+        Me.T_Day_01.TabIndex = 12
+        Me.T_Day_01.Text = "2011/1/1"
+        Me.T_Day_01.TextAlign = System.Drawing.ContentAlignment.BottomRight
+        '
+        'T_Day_00
+        '
+        Me.T_Day_00.BackColor = System.Drawing.Color.Transparent
+        Me.T_Day_00.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.T_Day_00.ForeColor = System.Drawing.Color.FromArgb(CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.T_Day_00.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.T_Day_00.Location = New System.Drawing.Point(128, 182)
+        Me.T_Day_00.Margin = New System.Windows.Forms.Padding(0)
+        Me.T_Day_00.Name = "T_Day_00"
+        Me.T_Day_00.Size = New System.Drawing.Size(212, 30)
+        Me.T_Day_00.TabIndex = 11
+        Me.T_Day_00.Text = "Release Date"
+        Me.T_Day_00.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        '
         'P_titeBack_Shadow
         '
         Me.P_titeBack_Shadow.BackColor = System.Drawing.Color.Transparent
@@ -225,20 +276,6 @@ Partial Class Viewer
         Me.star_rating.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.star_rating.TabIndex = 13
         Me.star_rating.TabStop = False
-        '
-        'T_Day_01
-        '
-        Me.T_Day_01.BackColor = System.Drawing.Color.Transparent
-        Me.T_Day_01.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.T_Day_01.ForeColor = System.Drawing.Color.FromArgb(CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.T_Day_01.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.T_Day_01.Location = New System.Drawing.Point(234, 197)
-        Me.T_Day_01.Margin = New System.Windows.Forms.Padding(0)
-        Me.T_Day_01.Name = "T_Day_01"
-        Me.T_Day_01.Size = New System.Drawing.Size(106, 15)
-        Me.T_Day_01.TabIndex = 12
-        Me.T_Day_01.Text = "2011/1/1"
-        Me.T_Day_01.TextAlign = System.Drawing.ContentAlignment.BottomRight
         '
         'StatusBar
         '
@@ -328,43 +365,6 @@ Partial Class Viewer
         Me.P_Line_02.TabIndex = 4
         Me.P_Line_02.TabStop = False
         '
-        'gameThumbnail
-        '
-        Me.gameThumbnail.BackColor = System.Drawing.Color.White
-        Me.gameThumbnail.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.gameThumbnail.Location = New System.Drawing.Point(8, 98)
-        Me.gameThumbnail.Name = "gameThumbnail"
-        Me.gameThumbnail.Size = New System.Drawing.Size(112, 112)
-        Me.gameThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.gameThumbnail.TabIndex = 1
-        Me.gameThumbnail.TabStop = False
-        '
-        'P_Shadow_00
-        '
-        Me.P_Shadow_00.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.P_Shadow_00.Image = Global.eShopMetadataViewer.My.Resources.Resources.shadow_01_96
-        Me.P_Shadow_00.Location = New System.Drawing.Point(3, 93)
-        Me.P_Shadow_00.Margin = New System.Windows.Forms.Padding(0)
-        Me.P_Shadow_00.Name = "P_Shadow_00"
-        Me.P_Shadow_00.Size = New System.Drawing.Size(122, 122)
-        Me.P_Shadow_00.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.P_Shadow_00.TabIndex = 0
-        Me.P_Shadow_00.TabStop = False
-        '
-        'T_Day_00
-        '
-        Me.T_Day_00.BackColor = System.Drawing.Color.Transparent
-        Me.T_Day_00.Font = New System.Drawing.Font("FOT-RodinNTLG Pro DB", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.T_Day_00.ForeColor = System.Drawing.Color.FromArgb(CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(70, Byte), Integer))
-        Me.T_Day_00.ImageAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.T_Day_00.Location = New System.Drawing.Point(128, 182)
-        Me.T_Day_00.Margin = New System.Windows.Forms.Padding(0)
-        Me.T_Day_00.Name = "T_Day_00"
-        Me.T_Day_00.Size = New System.Drawing.Size(212, 30)
-        Me.T_Day_00.TabIndex = 11
-        Me.T_Day_00.Text = "Release Date"
-        Me.T_Day_00.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        '
         'T_star_00
         '
         Me.T_star_00.BackColor = System.Drawing.Color.Transparent
@@ -415,13 +415,15 @@ Partial Class Viewer
         Me.MaximumSize = New System.Drawing.Size(416, 543)
         Me.MinimumSize = New System.Drawing.Size(416, 543)
         Me.Name = "Viewer"
-        Me.Text = "eShop Metadata Viewer"
+        Me.Text = "eShop Title Viewer"
         Me.BottomScreen.ResumeLayout(False)
         Me.BottomScreen.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.TopScreen.ResumeLayout(False)
         Me.TopScreen.PerformLayout()
+        CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_titeBack_Shadow, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_StatusBar_Shadow, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Shadow_01, System.ComponentModel.ISupportInitialize).EndInit()
@@ -433,8 +435,6 @@ Partial Class Viewer
         CType(Me.P_rating_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Line_01, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_Line_02, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.gameThumbnail, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.P_Shadow_00, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.P_titleBack_00, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

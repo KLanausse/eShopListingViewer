@@ -50,7 +50,7 @@ Public Class Dialog1
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         If TextBox1.Text = Nothing Then
             Dim content As String = ListBox1.SelectedItem.ToString
-            Dim dashIndex = ListBox1.SelectedItem.ToString.IndexOf("-") + 2
+            Dim dashIndex = ListBox1.SelectedItem.ToString.LastIndexOf("-") + 2
             Dim colonIndex = ListBox1.SelectedItem.ToString.IndexOf(":") + 2
 
             Me.ID = content.Substring(dashIndex, 14)

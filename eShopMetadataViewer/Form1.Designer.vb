@@ -415,7 +415,7 @@ Partial Class Viewer
         Me.MaximumSize = New System.Drawing.Size(416, 543)
         Me.MinimumSize = New System.Drawing.Size(416, 543)
         Me.Name = "Viewer"
-        Me.Text = "eShop Metadata Viewer"
+        Me.Text = "eShop Title Viewer"
         Me.BottomScreen.ResumeLayout(False)
         Me.BottomScreen.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)

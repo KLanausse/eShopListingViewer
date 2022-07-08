@@ -63,7 +63,19 @@ Public Class Viewer
 
             'Load content metadata
             Try
-                metadata = XDocument.Load("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/title/" + Dialog1.ID + "/?shop_id=1")
+                'Check if the title metadata is downloaded; if not, download it
+                Dim FileName As String
+                Dim FileExists As String
+                FileName = Directory.GetCurrentDirectory() + "\samurai.ctr.shop.nintendo.net\samurai\ws\US\title\" + Dialog1.ID + "\%3Fshop_id=1.xml"
+                FileExists = Dir(FileName)
+
+                If FileExists = "" Then
+                    My.Computer.FileSystem.CreateDirectory(Directory.GetCurrentDirectory() + "\samurai.ctr.shop.nintendo.net\samurai\ws\US\title\" + Dialog1.ID)
+                    My.Computer.Network.DownloadFile("https://samurai.ctr.shop.nintendo.net/samurai/ws/US/title/" + Dialog1.ID + "/?shop_id=1", Directory.GetCurrentDirectory() + "\samurai.ctr.shop.nintendo.net\samurai\ws\US\title\" + Dialog1.ID + "\%3Fshop_id=1.xml")
+
+                End If
+                'Orignal
+                metadata = XDocument.Load(FileName)
                 webErr = False
             Catch ex As WebException
                 Using reader As New StreamReader(ex.Response.GetResponseStream())
@@ -240,27 +252,48 @@ Public Class Viewer
 
         If hasCerts Then
             'https://stackoverflow.com/questions/39528973/force-httpwebrequest-to-send-client-certificate
+            Dim pricingData As XDocument
+            Dim titleID As String
+            Dim URL As String
+            titleID = metadata.<eshop>.Descendants("title").First().Attribute("id").Value
+            URL = "ninja.ctr.shop.nintendo.net\ninja\ws\US\titles\online_prices%3Ftitle%5B%5D=" + titleID + "&lang=EN&include_coupon=false&coupon_id=0&shop_id=1&_type=json"
 
-            Dim req As HttpWebRequest = WebRequest.Create("https://ninja.ctr.shop.nintendo.net/ninja/ws/US/titles/online_prices?title%5B%5D=" + metadata.<eshop>.Descendants("title").First().Attribute("id").Value + "&lang=EN&include_coupon=false&coupon_id=0&shop_id=1&_type=json")
-            req.ClientCertificates = clientCerts
-            req.Method = "GET"
-            Dim resp As WebResponse = req.GetResponse()
-            Dim stream As Stream = resp.GetResponseStream()
-            Using reader As StreamReader = New StreamReader(stream)
+            Try
+                'Check if the title metadata is downloaded; if not, download it
+                Dim FileName As String
+                Dim FileExists As String
+                FileName = Directory.GetCurrentDirectory() + "\" + URL
+                FileExists = Dir(FileName)
 
-                Dim line As String = reader.ReadLine()
-                Dim pricingData As XDocument
-                If line IsNot Nothing Then
+                If FileExists = "" Then
 
-                    pricingData = XDocument.Parse(line)
-                    T_price_00.Text = pricingData.<eshop>.<online_prices>.<online_price>.<price>.<regular_price>.<amount>.Value
+                    My.Computer.FileSystem.CreateDirectory(Directory.GetCurrentDirectory() + "\ninja.ctr.shop.nintendo.net\ninja\ws\US\titles")
+
+                    Dim req As HttpWebRequest = WebRequest.Create("https:\\" + URL)
+                    req.ClientCertificates = clientCerts
+                    req.Method = "GET"
+                    Dim resp As WebResponse = req.GetResponse()
+                    Dim stream As Stream = resp.GetResponseStream()
+                    Using reader As StreamReader = New StreamReader(stream)
+
+                        Dim line As String = reader.ReadLine()
+                        Dim fs As FileStream = File.Create(Directory.GetCurrentDirectory() + "\" + URL + ".xml")
+                    End Using
+                    stream.Close()
 
                 End If
-            End Using
-            stream.Close()
+                pricingData = XDocument.Load(FileName + ".xml")
+            Catch ex As WebException
+                Using reader As New StreamReader(ex.Response.GetResponseStream())
+                    metadata = XDocument.Parse(reader.ReadToEnd())
+                    MsgBox(metadata.<eshop>.<error>.<message>.Value, vbCritical Or vbOK, "Error " + metadata.<eshop>.<error>.<code>.Value)
+                End Using
+            End Try
+
+            T_price_00.Text = pricingData.<eshop>.<online_prices>.<online_price>.<price>.<regular_price>.<amount>.Value
+
         End If
 
         Return 0
     End Function
-
 End Class

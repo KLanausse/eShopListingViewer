@@ -1,5 +1,5 @@
 # eShopListingViewer
-A Simple app made in Visual Basic that lets you view a listed 3DS Title as if you were on the eShop!
+A Simple app made in Visual Basic that lets you view listings from the 3DS eShop while trying to replicate it's UI!
 <br>
 ![screenshot](https://github.com/KLanausse/eShopMetadataViewer/raw/master/readme/Screenshot_2022-03-07-151920.png)
 
